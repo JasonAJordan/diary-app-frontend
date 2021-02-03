@@ -1,23 +1,47 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
+import React, { useState, useEffect } from "react";
+import Calendar from "./pages/Calendar";
+import Day from "./pages/Day"
+
+import { Route, Switch } from 'react-router-dom';
+
 function App() {
+
+  const [user, setUser] = useState([])
+  const [month, setMonth] = useState(0)
+
+
+  useEffect(() => { 
+    fetch(`http://localhost:3000/users/1`)
+    .then(resp => resp.json())
+    .then(data => {
+      setUser(data)
+    })
+  }, [])
+
+  //console.log(user.id)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav>Nav Here </nav>
+      Diary App 
+
+    <Switch>
+
+      <Route exact path="/days/:id">
+          <Day />
+      </Route>
+
+      <Route exact path="/">
+          <Calendar days={user.days} month={month}/>
+      </Route>
+
+    </Switch>
+    
+
+    <br></br><br></br>
     </div>
   );
 }

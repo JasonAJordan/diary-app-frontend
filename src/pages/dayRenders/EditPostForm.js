@@ -28,7 +28,7 @@ function EditPostForm({handleEditPost, post, day, setEditmode}){
             body: JSON.stringify(formData),
             })
         .then(r => r.json())
-        .then(newPost => handleEditPost(newPost))
+        .then(updatedPost => handleEditPost(updatedPost))
 
         setEditmode(false);
     }
@@ -38,15 +38,15 @@ function EditPostForm({handleEditPost, post, day, setEditmode}){
             <h2>Edit Entry</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="title" placeholder={post.title}
-                value={formData.name}
+                value={formData.title}
                 onChange={handleFormChange}
                 />
                 <input type="textarea" name="context" placeholder={post.context}
-                value={formData.name}
+                value={formData.context}
                 onChange={handleFormChange}
                 />
                 <input type="color" name="text_color" 
-                value={formData.name}
+                value={formData.text_color}
                 onChange={handleFormChange}
                 />
                 <button type="submit">Save the Entry! </button>

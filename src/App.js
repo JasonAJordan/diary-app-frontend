@@ -41,7 +41,7 @@ function App() {
         </Route>
 
         <Route exact path="/users/:id">
-            <User user={user}/>
+            <User user={user} setUser={setUser}/>
         </Route>
 
         <Route exact path="/">

@@ -29,8 +29,8 @@ function Day({user}){
     //Loading data 
     if (!isLoaded) return <h2>Loading...</h2>
 
-    //console.log(stickers)
-
+    
+    //Maping Data
     const mappedStickers = stickers.map((sticker) => {
         return <DayStickerRender sticker={sticker} key={sticker.id}
         handleDeleteSticker={handleDeleteSticker}

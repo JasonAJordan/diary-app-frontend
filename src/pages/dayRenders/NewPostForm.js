@@ -9,7 +9,7 @@ function NewPostForm({handleNewPost, day}){
         day_id: day.id,
         title: "",
         context: "",
-        text_color: "black",
+        text_color: "#b8fffe",
     })
 
     function handleFormChange(event){

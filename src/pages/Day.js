@@ -31,7 +31,6 @@ function Day({user}){
 
     //console.log(stickers)
 
-
     const mappedStickers = stickers.map((sticker) => {
         return <DayStickerRender sticker={sticker} key={sticker.id}
         handleDeleteSticker={handleDeleteSticker}
@@ -81,9 +80,6 @@ function Day({user}){
         setStickers(updatedStickers)
     }
 
-    // console.log(day)
-    //console.log(day.stickers)
-
     return(
         <div>
 
@@ -98,7 +94,6 @@ function Day({user}){
         </div>
 
         <NewPostForm day={day} handleNewPost={handleNewPost}/>
-
         <NewDayStickerForm day={day} handleNewDaySticker={handleNewDaySticker} userStickers={user.stickers}/>
 
         <br></br>

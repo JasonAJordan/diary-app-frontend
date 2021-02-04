@@ -8,7 +8,6 @@ function Calendar({days, month}){
         <div>
             Calendar Here
 
-
         </div>
     )
 }

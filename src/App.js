@@ -4,6 +4,7 @@ import './App.css';
 import React, { useState, useEffect } from "react";
 import Calendar from "./pages/Calendar";
 import Day from "./pages/Day"
+import User from "./pages/User"
 
 import { Route, Switch } from 'react-router-dom';
 
@@ -37,6 +38,10 @@ function App() {
 
         <Route exact path="/days/:id">
             <Day user={user}/>
+        </Route>
+
+        <Route exact path="/users/:id">
+            <User user={user}/>
         </Route>
 
         <Route exact path="/">

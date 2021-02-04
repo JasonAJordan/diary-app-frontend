@@ -11,6 +11,7 @@ function App() {
 
   const [user, setUser] = useState([])
   const [month, setMonth] = useState(0)
+  const [loaded, setLoaded] = useState(false)
 
 
   useEffect(() => { 
@@ -18,32 +19,37 @@ function App() {
     .then(resp => resp.json())
     .then(data => {
       setUser(data)
+      setLoaded(true)
     })
   }, [])
 
   //console.log(user.id)
 
-  return (
-    <div>
-      <nav>Nav Here </nav>
-      Diary App 
+  if (loaded === false) {
+    return <h2> LOADING </h2>
+  } else {
+    return (
+      <div>
+        <nav>Nav Here </nav>
+        Diary App 
 
-    <Switch>
+      <Switch>
 
-      <Route exact path="/days/:id">
-          <Day />
-      </Route>
+        <Route exact path="/days/:id">
+            <Day user={user}/>
+        </Route>
 
-      <Route exact path="/">
-          <Calendar days={user.days} month={month}/>
-      </Route>
+        <Route exact path="/">
+            <Calendar days={user.days} month={month}/>
+        </Route>
 
-    </Switch>
-    
+      </Switch>
+      
 
-    <br></br><br></br>
-    </div>
-  );
+      <br></br><br></br>
+      </div>
+    );
+  }
 }
 
 export default App;

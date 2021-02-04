@@ -2,13 +2,15 @@ import { useState, useEffect }  from "react";
 import { useParams, Link } from "react-router-dom";
 import DayStickerRender from "./dayRenders/DayStickerRender";
 import NewPostForm from "./dayRenders/NewPostForm";
+import NewDayStickerForm from "./dayRenders/NewDayStickerForm";
 import PostRender from "./dayRenders/PostRender";
 
 
-function Day(){
+function Day({user}){
 
     const [day, setDay] = useState(null);
     const [posts, setPosts] = useState([]);
+    const [stickers, setStickers] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
 
     const params =useParams();
@@ -19,6 +21,7 @@ function Day(){
         .then((data) => {
             setDay(data);
             setPosts(data.posts)
+            setStickers(data.stickers)
             setIsLoaded(true);
         })
     },[params.id])
@@ -26,9 +29,13 @@ function Day(){
     //Loading data 
     if (!isLoaded) return <h2>Loading...</h2>
 
+    //console.log(stickers)
 
-    const mappedStickers = day.stickers.map((sticker) => {
-        return <DayStickerRender sticker={sticker} key={sticker.id}/>
+
+    const mappedStickers = stickers.map((sticker) => {
+        return <DayStickerRender sticker={sticker} key={sticker.id}
+        handleDeleteSticker={handleDeleteSticker}
+        />
     })
 
     const mappedPosts = posts.map((post) => {
@@ -39,7 +46,7 @@ function Day(){
         />
     })
 
-
+    //Post handles 
     function handleNewPost(newPost){
         setPosts([...posts, newPost])
     }
@@ -62,10 +69,20 @@ function Day(){
         setPosts(updatedPostsArray)
     }
 
+    //stickerHandles 
+    function handleNewDaySticker(newStickerjoiner){
+        setStickers([...stickers, newStickerjoiner.sticker])
+    }
 
+    function handleDeleteSticker(removedSticker){
+        const updatedStickers = stickers.filter((sticker) => (
+            sticker.id !== removedSticker.id ? true : false
+        ))
+        setStickers(updatedStickers)
+    }
 
     // console.log(day)
-    // console.log(day.stickers)
+    //console.log(day.stickers)
 
     return(
         <div>
@@ -81,6 +98,8 @@ function Day(){
         </div>
 
         <NewPostForm day={day} handleNewPost={handleNewPost}/>
+
+        <NewDayStickerForm day={day} handleNewDaySticker={handleNewDaySticker} userStickers={user.stickers}/>
 
         <br></br>
         <br></br>

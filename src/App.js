@@ -52,7 +52,7 @@ function App() {
         </Route>
 
         <Route exact path="/">
-            <Calendar days={user.days} month={month} setMonth={setMonth}/>
+            <Calendar days ={user.days} month={month} setMonth={setMonth} user={user}/>
         </Route>
 
       </Switch>

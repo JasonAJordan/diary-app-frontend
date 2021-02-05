@@ -10,16 +10,39 @@ function Day({user, setUser}){
 
     const params =useParams();
 
-    // function search(nameKey, myArray){
+    // function search(dayId, daysArray){
     //     for (var i=0; i < myArray.length; i++) {
-    //         if (myArray[i].id === nameKey) {
-    //             return myArray[i];
+    //         if (daysArray[i].id === dayId) {
+    //             return daysArray[i];
     //         }
     //     }
     // }
 
     // const resultObject = search(1, user.days)
     // console.log(resultObject.posts)
+
+     function updateDaysForNew(dayId, daysArray, updatedPost){
+        const updatedDays = []
+        //console.log (daysArray, "function array check ")
+        console.log(dayId)
+
+        for (let i=0; i < daysArray.length; i++) {
+            if (daysArray[i].id == dayId) {
+                const updatedPostArray = daysArray[i].posts.concat(updatedPost)
+                //console.log(daysArray[i], "the array in the if statment")
+                //console.log(daysArray[i].posts, "array.posts")
+                //console.log(daysArray[i][date])
+                //console.log(updatedPostArray, "what's being pushed into the day's post array")
+                let updatedDay = daysArray[i];
+                updatedDay.posts = updatedPostArray
+                updatedDays.push(updatedDay);
+            } else {
+                updatedDays.push(daysArray[i]);
+            }
+        }
+        //console.log(updatedDays, "function check ")
+        return updatedDays
+    }
 
     const [day, setDay] = useState(null);
     const [posts, setPosts] = useState([]);
@@ -60,8 +83,15 @@ function Day({user, setUser}){
     function handleNewPost(newPost){
         setPosts([...posts, newPost])
         //setUser(user)
+
         const updatedUser = user 
-        //updatedUser.days 
+        const updatedDays = updateDaysForNew(params.id, user.days, newPost)
+        //console.log(updatedUser, "the user before the update")
+        //console.log(updatedUser.days, "usersdays before update")
+        updatedUser.days = updatedDays
+        //console.log(updatedDays, "updated days")
+
+        setUser(updatedUser)
 
     }
 

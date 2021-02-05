@@ -3,14 +3,18 @@ import { useParams, Link } from "react-router-dom";
 import CalendarMaker from "./CalendarRenders/CalendarMaker"
 
 import '../App.css'
+import { useState } from "react";
 
 
-function Calendar({days, month, setMonth}){
+function Calendar({days, month, setMonth, user}){
 
     //const [stickerMode, setStickerMode] = useState(false)
+    console.log(user.days , "userdays")
 
     const sliceMonthStart=[0,31,59,90,120,151,181,212,243,273,304,334]
     const sliceMonthEnd =[31,59,90,120,151,181,212,243,273,304,334,365]
+
+    //const [days, setDays] = useState([user.days])
 
     const daysOrdered = days.sort((day1, day2) => {
         return day1.date.localeCompare(day2.date)

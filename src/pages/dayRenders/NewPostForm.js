@@ -44,11 +44,11 @@ function NewPostForm({handleNewPost, day}){
                 onChange={handleFormChange}
                 />
                 <input type="textarea" name="context" placeholder="Your Entry"
-                value={formData.name}
+                value={formData.context}
                 onChange={handleFormChange}
                 />
                 <input type="color" name="text_color" 
-                value={formData.name}
+                value={formData.color}
                 onChange={handleFormChange}
                 />
                 <button type="submit">Add the Entry! </button>

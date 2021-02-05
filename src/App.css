@@ -2,39 +2,52 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.Wholecalendar {
+  text-align: center;
+    
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.calendar {
+  margin: auto;
+  max-width: 840px;
+  width: 840;
+  padding: 20px solid aqua;
+  border: 5px solid rgb(17, 255, 176);
+  background-color: aquamarine;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* not being used  */
+.calendarbackground{ 
+  max-width: 860px;
+  width: 860px;
+  border: 5px brown;
+
 }
 
-.App-link {
-  color: #61dafb;
+.calendarDayLabels {
+  max-width: 118px;
+  width: 118px;
+  float: left;
+  max-height: 48px;
+  height: 48px;
+  border: 1px solid black;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.calendarDay {
+  max-width: 118px;
+  width: 118px;
+  float: left;
+  max-height: 68px;
+  height: 68px;
+  border: 1px solid black;
+}
+
+
+.weekdays{
+  flex-flow: column wrap;
 }
 
 

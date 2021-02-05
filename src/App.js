@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Calendar from "./pages/Calendar";
 import Day from "./pages/Day"
 import User from "./pages/User"
+import SignUp from "./pages/SignUp"
 
 import { Route, Switch } from 'react-router-dom';
 
@@ -44,8 +45,12 @@ function App() {
             <User user={user} setUser={setUser}/>
         </Route>
 
+        <Route exact path="/signup">
+            <SignUp/>
+        </Route>
+
         <Route exact path="/">
-            <Calendar days={user.days} month={month}/>
+            <Calendar days={user.days} month={month} setMonth={setMonth}/>
         </Route>
 
       </Switch>

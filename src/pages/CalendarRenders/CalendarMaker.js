@@ -1,18 +1,18 @@
-import { useState, useEffect }  from "react";
-import { useParams, Link } from "react-router-dom";
+//import { useState, useEffect }  from "react";
+import { Link } from "react-router-dom";
 import Day from "../Day";
 //import CalendarDay from "./CalendarDay"
 
 
 function CalendarMaker({daysSliced, month}){
 
-    console.log(daysSliced)
+    //console.log(daysSliced)
     const monthC = month % 12
 
 
     function postStickers(stickers){
         const stickersMapped = stickers.map((sticker) => {
-            return <img src={sticker.image} alt={sticker.name} width="20" height="20"/>
+            return <img src={sticker.image} alt={sticker.name} width="20" height="20" key={sticker.id}/>
         })
 
         return <div>{stickersMapped}</div>

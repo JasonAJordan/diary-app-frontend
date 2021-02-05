@@ -7,11 +7,13 @@ import Day from "./pages/Day"
 import User from "./pages/User"
 import SignUp from "./pages/SignUp"
 
+import NavBar from "./navBar/NavBar"
+
 import { Route, Switch } from 'react-router-dom';
 
-function App() {
+function App() {  
 
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState(null)
   const [month, setMonth] = useState(0)
   const [loaded, setLoaded] = useState(false)
 
@@ -25,20 +27,20 @@ function App() {
     })
   }, [])
 
-  //console.log(user.id)
+  
 
   if (loaded === false) {
     return <h2> LOADING </h2>
   } else {
     return (
       <div>
-        <nav>Nav Here </nav>
-        Diary App 
+      <NavBar user={user}/>
+      Diary App 
 
       <Switch>
 
         <Route exact path="/days/:id">
-            <Day user={user}/>
+            <Day user={user} setUser={setUser}/>
         </Route>
 
         <Route exact path="/users/:id">

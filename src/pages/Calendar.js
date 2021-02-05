@@ -1,4 +1,4 @@
-import { useState, useEffect }  from "react";
+//import { useState, useEffect }  from "react";
 import { useParams, Link } from "react-router-dom";
 import CalendarMaker from "./CalendarRenders/CalendarMaker"
 
@@ -6,6 +6,8 @@ import '../App.css'
 
 
 function Calendar({days, month, setMonth}){
+
+    //const [stickerMode, setStickerMode] = useState(false)
 
     const sliceMonthStart=[0,31,59,90,120,151,181,212,243,273,304,334]
     const sliceMonthEnd =[31,59,90,120,151,181,212,243,273,304,334,365]
@@ -68,6 +70,7 @@ function Calendar({days, month, setMonth}){
 
             <CalendarMaker daysSliced={daysSliced} month={month}/>
 
+            
         </div>
     )
 }

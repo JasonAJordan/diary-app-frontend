@@ -6,14 +6,25 @@ import NewDayStickerForm from "./dayRenders/NewDayStickerForm";
 import PostRender from "./dayRenders/PostRender";
 
 
-function Day({user}){
+function Day({user, setUser}){
+
+    const params =useParams();
+
+    // function search(nameKey, myArray){
+    //     for (var i=0; i < myArray.length; i++) {
+    //         if (myArray[i].id === nameKey) {
+    //             return myArray[i];
+    //         }
+    //     }
+    // }
+
+    // const resultObject = search(1, user.days)
+    // console.log(resultObject.posts)
 
     const [day, setDay] = useState(null);
     const [posts, setPosts] = useState([]);
     const [stickers, setStickers] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
-
-    const params =useParams();
 
     useEffect(() => {
         fetch(`http://localhost:3000/days/${params.id}`)
@@ -48,6 +59,10 @@ function Day({user}){
     //Post handles 
     function handleNewPost(newPost){
         setPosts([...posts, newPost])
+        //setUser(user)
+        const updatedUser = user 
+        //updatedUser.days 
+
     }
 
     function handleDeletePost(removedPost){

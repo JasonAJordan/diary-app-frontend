@@ -22,7 +22,7 @@ function NewPostForm({handleNewPost, day}){
 
     function handleSubmit(event){
         event.preventDefault()
-        console.log(formData)
+        //console.log(formData)
 
         fetch(`http://localhost:3000/posts`,{
             method: 'POST',

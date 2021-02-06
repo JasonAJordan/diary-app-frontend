@@ -38,10 +38,21 @@ function Day({user, setUser}){
 
     },[params.id])
 
-     function updateDaysForNew(dayId, daysArray, updatedPost){
+    // useEffect(() => {
+    //     fetch(`http://localhost:3000/days/${params.id}`)
+    //     .then((r) => r.json())
+    //     .then((data) => {
+    //         setDay(data);
+    //         setPosts(data.posts)
+    //         setStickers(data.stickers)
+    //         setIsLoaded(true);
+    //     })
+    // },[params.id])
+
+    function updateDaysForNew(dayId, daysArray, updatedPost){
         const updatedDays = []
         //console.log (daysArray, "function array check ")
-        console.log(dayId)
+        //console.log(dayId)
 
         for (let i=0; i < daysArray.length; i++) {
             if (daysArray[i].id == dayId) {
@@ -61,20 +72,21 @@ function Day({user, setUser}){
         return updatedDays
     }
 
+    function updateDaysForDelete(dayId, daysArray, updatedPosts){
+        const updatedDays = []
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:3000/days/${params.id}`)
-    //     .then((r) => r.json())
-    //     .then((data) => {
-    //         setDay(data);
-    //         setPosts(data.posts)
-    //         setStickers(data.stickers)
-    //         setIsLoaded(true);
-    //     })
-    // },[params.id])
+        for (let i=0; i < daysArray.length; i++) {
+            if (daysArray[i].id == dayId) {
+                let updatedDay = daysArray[i];
+                updatedDay.posts = updatedPosts
+                updatedDays.push(updatedDay);
+            } else {
+                updatedDays.push(daysArray[i]);
+            }
+        }
+        return updatedDays
+    }
 
-    //Loading data 
-    if (!isLoaded) return <h2>Loading...</h2>
 
     
     //Maping Data
@@ -82,6 +94,7 @@ function Day({user, setUser}){
         return <DayStickerRender sticker={sticker} key={sticker.id}
         handleDeleteSticker={handleDeleteSticker}
         dayStickers ={day.day_stickers}
+        user = {user}
         />
     })
 
@@ -110,10 +123,16 @@ function Day({user, setUser}){
     }
 
     function handleDeletePost(removedPost){
-        const updatedPost = posts.filter((post) => (
+        const updatedPosts = posts.filter((post) => (
             post.id !== removedPost.id ? true : false
         ))
-        setPosts(updatedPost)
+        setPosts(updatedPosts)
+
+        const updatedUser = user 
+        const updatedDays = updateDaysForDelete(params.id, user.days, updatedPosts)
+        updatedUser.days = updatedDays
+
+        setUser(updatedUser)
     }
     
     function handleEditPost(updatedPost){
@@ -139,28 +158,31 @@ function Day({user, setUser}){
         setStickers(updatedStickers)
     }
 
+
+    //Loading data 
+    if (!isLoaded) return <h2>Loading... or maybe you do not have access to this post.</h2>
+    else {
     return(
-        <div>
+            <div>
 
-        This is the day page! 
-        <h1>{day.date}</h1>
-        
-        <h2>Stickers: {mappedStickers} </h2>
+            This is the day page! 
+            <h1>{day.date}</h1>
+            
+            <h2>Stickers: {mappedStickers} </h2>
 
-        <div> 
-            <h2>Posts:</h2>
-            {mappedPosts}
-        </div>
+            <div> 
+                <h2>Posts:</h2>
+                {mappedPosts}
+            </div>
 
-        <NewPostForm day={day} handleNewPost={handleNewPost}/>
-        <NewDayStickerForm day={day} handleNewDaySticker={handleNewDaySticker} userStickers={user.stickers}/>
+            <NewPostForm day={day} handleNewPost={handleNewPost}/>
+            <NewDayStickerForm day={day} handleNewDaySticker={handleNewDaySticker} userStickers={user.stickers}/>
 
-        <br></br>
-        <br></br>
-        </div>
-
-        
-    )
+            <br></br>
+            <br></br>
+            </div>
+        )
+    }
 }
 
 export default Day

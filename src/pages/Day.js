@@ -10,16 +10,33 @@ function Day({user, setUser}){
 
     const params =useParams();
 
-    // function search(dayId, daysArray){
-    //     for (var i=0; i < myArray.length; i++) {
-    //         if (daysArray[i].id === dayId) {
-    //             return daysArray[i];
-    //         }
-    //     }
-    // }
+    const [day, setDay] = useState(null);
+    const [posts, setPosts] = useState([]);
+    const [stickers, setStickers] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
-    // const resultObject = search(1, user.days)
-    // console.log(resultObject.posts)
+    function search(dayId, daysArray){
+        for (let i=0; i < daysArray.length; i++) {
+            if (daysArray[i].id === dayId) {
+                return daysArray[i];
+            }
+        }
+    }
+
+    // const resultObject = search(Number(params.id), user.days)
+    // //console.log(params.id)
+    // console.log(user.days)
+    // console.log(resultObject)
+
+    useEffect(() => {
+        const resultObject = search(Number(params.id), user.days)
+        //console.log(resultObject)
+        setDay(resultObject);
+        setPosts(resultObject.posts)
+        setStickers(resultObject.stickers)
+        setIsLoaded(true);
+
+    },[params.id])
 
      function updateDaysForNew(dayId, daysArray, updatedPost){
         const updatedDays = []
@@ -44,21 +61,17 @@ function Day({user, setUser}){
         return updatedDays
     }
 
-    const [day, setDay] = useState(null);
-    const [posts, setPosts] = useState([]);
-    const [stickers, setStickers] = useState([]);
-    const [isLoaded, setIsLoaded] = useState(false);
 
-    useEffect(() => {
-        fetch(`http://localhost:3000/days/${params.id}`)
-        .then((r) => r.json())
-        .then((data) => {
-            setDay(data);
-            setPosts(data.posts)
-            setStickers(data.stickers)
-            setIsLoaded(true);
-        })
-    },[params.id])
+    // useEffect(() => {
+    //     fetch(`http://localhost:3000/days/${params.id}`)
+    //     .then((r) => r.json())
+    //     .then((data) => {
+    //         setDay(data);
+    //         setPosts(data.posts)
+    //         setStickers(data.stickers)
+    //         setIsLoaded(true);
+    //     })
+    // },[params.id])
 
     //Loading data 
     if (!isLoaded) return <h2>Loading...</h2>
@@ -68,6 +81,7 @@ function Day({user, setUser}){
     const mappedStickers = stickers.map((sticker) => {
         return <DayStickerRender sticker={sticker} key={sticker.id}
         handleDeleteSticker={handleDeleteSticker}
+        dayStickers ={day.day_stickers}
         />
     })
 

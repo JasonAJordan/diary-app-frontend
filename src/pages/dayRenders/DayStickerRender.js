@@ -3,19 +3,19 @@ function DayStickerRender({sticker, handleDeleteSticker, dayStickers, user}){
 
     //THis is the day_sticker 
 
-    const daySid = dayStickers.find( (dayS) => {
+    let daySticker = dayStickers.find((dayS) => {
         return (sticker.id === dayS.sticker_id)
     })
 
-    //console.log(daySid.id, "daysticker ID")
+    console.log(dayStickers, "daystickers")
 
     function handleDeleteClick(){
         //console.log(post.id)
-        const id = sticker.id.toString()
-        fetch(`http://localhost:3000/day_stickers/${daySid.id}`, {
+        //const id = sticker.id.toString()
+        fetch(`http://localhost:3000/day_stickers/${daySticker.id}`, {
             method: "DELETE",
         });
-        handleDeleteSticker(sticker);
+        handleDeleteSticker(sticker, daySticker);
     }
 
     return (

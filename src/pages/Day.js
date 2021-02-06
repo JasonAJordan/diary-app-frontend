@@ -13,6 +13,7 @@ function Day({user, setUser}){
     const [day, setDay] = useState(null);
     const [posts, setPosts] = useState([]);
     const [stickers, setStickers] = useState([]);
+    const [dayStickers, setDayStickers] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
 
     function search(dayId, daysArray){
@@ -34,6 +35,7 @@ function Day({user, setUser}){
         setDay(resultObject);
         setPosts(resultObject.posts)
         setStickers(resultObject.stickers)
+        setDayStickers(resultObject.day_stickers)
         setIsLoaded(true);
 
     },[params.id])
@@ -49,7 +51,10 @@ function Day({user, setUser}){
     //     })
     // },[params.id])
 
-    function updateDaysForNew(dayId, daysArray, updatedPost){
+
+    //The days update helper functions (there should be 4!)
+
+    function updateDaysForNewPost(dayId, daysArray, updatedPost){
         const updatedDays = []
         //console.log (daysArray, "function array check ")
         //console.log(dayId)
@@ -72,7 +77,7 @@ function Day({user, setUser}){
         return updatedDays
     }
 
-    function updateDaysForDelete(dayId, daysArray, updatedPosts){
+    function updateDaysForDeletePost(dayId, daysArray, updatedPosts){
         const updatedDays = []
 
         for (let i=0; i < daysArray.length; i++) {
@@ -87,13 +92,47 @@ function Day({user, setUser}){
         return updatedDays
     }
 
+    function updateDaysForAddStickers(daysArray, updatedStickers, updatedDayStickers){
+        const updatedDays = []
 
+        for (let i=0; i < daysArray.length; i++) {
+            if (daysArray[i].id == params.id) {
+                let updatedDay = daysArray[i];
+                updatedDay.stickers = updatedStickers
+                updatedDay.day_stickers = updatedDayStickers
+                console.log(updatedDay)
+                setDay(updatedDay)           //might need this for bug
+                updatedDays.push(updatedDay);
+            } else {
+                updatedDays.push(daysArray[i]);
+            }
+        }
+        return updatedDays
+    }
+
+    function updateDaysForDeleteStickers(daysArray, updatedStickers, updatedDayStickers){
+        const updatedDays = []
+
+        for (let i=0; i < daysArray.length; i++) {
+            if (daysArray[i].id == params.id) {
+                let updatedDay = daysArray[i];
+                updatedDay.stickers = updatedStickers
+                updatedDay.day_stickers = updatedDayStickers
+                setDay(updatedDay)                //might need this for bug
+                updatedDays.push(updatedDay);
+            } else {
+                updatedDays.push(daysArray[i]);
+            }
+        }
+        return updatedDays
+    }
     
-    //Maping Data
+    
+    //Maping Data for calander render
     const mappedStickers = stickers.map((sticker) => {
         return <DayStickerRender sticker={sticker} key={sticker.id}
         handleDeleteSticker={handleDeleteSticker}
-        dayStickers ={day.day_stickers}
+        dayStickers ={dayStickers}
         user = {user}
         />
     })
@@ -112,7 +151,7 @@ function Day({user, setUser}){
         //setUser(user)
 
         const updatedUser = user 
-        const updatedDays = updateDaysForNew(params.id, user.days, newPost)
+        const updatedDays = updateDaysForNewPost(params.id, user.days, newPost)
         //console.log(updatedUser, "the user before the update")
         //console.log(updatedUser.days, "usersdays before update")
         updatedUser.days = updatedDays
@@ -129,7 +168,7 @@ function Day({user, setUser}){
         setPosts(updatedPosts)
 
         const updatedUser = user 
-        const updatedDays = updateDaysForDelete(params.id, user.days, updatedPosts)
+        const updatedDays = updateDaysForDeletePost(params.id, user.days, updatedPosts)
         updatedUser.days = updatedDays
 
         setUser(updatedUser)
@@ -146,20 +185,47 @@ function Day({user, setUser}){
         setPosts(updatedPostsArray)
     }
 
-    //stickerHandles 
+    //sticker Handles 
     function handleNewDaySticker(newStickerjoiner){
-        setStickers([...stickers, newStickerjoiner.sticker])
+        const updatedStickers = [...stickers, newStickerjoiner.sticker]
+        setStickers(updatedStickers)
+        //console.log(updatedStickers)
+
+        const newDayStickerJoiner = {
+            id: newStickerjoiner.id,
+            day_id: newStickerjoiner.day.id,
+            sticker_id: newStickerjoiner.sticker.id,
+        }
+        const updatedDayStickers = [...dayStickers, newDayStickerJoiner]
+        setDayStickers(updatedDayStickers)
+
+        const updatedUser = user
+        const updatedDays = updateDaysForAddStickers(user.days, updatedStickers, updatedDayStickers)
+        updatedUser.days = updatedDays
+        setUser(updatedUser)
     }
 
-    function handleDeleteSticker(removedSticker){
+    function handleDeleteSticker(removedSticker, removedDaySticker){
+        //console.log(removedSticker)
         const updatedStickers = stickers.filter((sticker) => (
             sticker.id !== removedSticker.id ? true : false
         ))
+        const updatedDayStickers = day.day_stickers.filter((joiner) => (
+            joiner.id !== removedDaySticker.id ? true : false
+        ))
+
         setStickers(updatedStickers)
+        setDayStickers(updatedDayStickers)
+
+        const updatedUser = user
+        const updatedDays = updateDaysForDeleteStickers(user.days, updatedStickers, updatedDayStickers)
+        updatedUser.days = updatedDays
+        setUser(updatedUser)
     }
 
 
-    //Loading data 
+    //Loading data block 
+
     if (!isLoaded) return <h2>Loading... or maybe you do not have access to this post.</h2>
     else {
     return(

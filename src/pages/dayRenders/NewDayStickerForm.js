@@ -16,9 +16,8 @@ function NewDaySticker({handleNewDaySticker, day, userStickers}){
 
     function handleSubmit(event){
         event.preventDefault()
-        console.log(formData)
+        //console.log(formData)
         
-
         fetch(`http://localhost:3000/day_stickers`,{
             method: 'POST',
             headers: {

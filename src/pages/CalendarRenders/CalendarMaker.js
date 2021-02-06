@@ -34,10 +34,14 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
     }
 
 
+    function randoNumber(){
+        return Math.floor(Math.random() * Math.floor(100))
+    }
+
     //This is a helper function for daysMapped rendering, This deals with making each sticker show. 
     function postStickers(stickers){
         const stickersMapped = stickers.map((sticker) => {
-            return <img src={sticker.image} alt={sticker.name} width="20" height="20" key={sticker.id}/>
+            return <img src={sticker.image} alt={sticker.name} width="20" height="20" key={randoNumber()}/>
         })
         return <div>{stickersMapped}</div>
     }
@@ -87,7 +91,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
         } else {
             if (day.posts[0] && day.stickers[0]) {
                 return (
-                    <div key={day.id} className="calendarDay">
+                    <div key={day.id} className="calendarDay" onClick={handleDayStickerClick} data-value={day.id}>
                         {day.date.slice(0,5)}<br/>
                         Post Made!
                         <br/>
@@ -96,14 +100,14 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                 )
             } else if (day.posts[0]){
                 return (
-                    <div key={day.id} className="calendarDay">
+                    <div key={day.id} className="calendarDay" onClick={handleDayStickerClick} data-value={day.id}>
                         {day.date.slice(0,5)}<br/>
                         Post Made!
                     </div>
                 ) 
             } else if (day.stickers[0]){
                 return (
-                    <div key={day.id} className="calendarDay">
+                    <div key={day.id} className="calendarDay" onClick={handleDayStickerClick} data-value={day.id}>
                         {day.date.slice(0,5)}<br/>
                         {postStickers(day.stickers)}
                     </div>

@@ -1,5 +1,5 @@
 
-function DayStickerRender({sticker, handleDeleteSticker, dayStickers, user}){
+function DayStickerRender({sticker, handleDeleteSticker, dayStickers}){
 
     //THis is the day_sticker 
 

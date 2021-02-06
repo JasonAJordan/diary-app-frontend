@@ -127,10 +127,14 @@ function Day({user, setUser}){
         return updatedDays
     }
     
+
+    function randoNumber(){
+        return Math.floor(Math.random() * Math.floor(100))
+    }
     
     //Maping Data for calander render
     const mappedStickers = stickers.map((sticker) => {
-        return <DayStickerRender sticker={sticker} key={sticker.id}
+        return <DayStickerRender sticker={sticker} key={randoNumber()}
         handleDeleteSticker={handleDeleteSticker}
         dayStickers ={dayStickers}
         user = {user}
@@ -162,6 +166,7 @@ function Day({user, setUser}){
     }
 
     function handleDeletePost(removedPost){
+        
         const updatedPosts = posts.filter((post) => (
             post.id !== removedPost.id ? true : false
         ))
@@ -207,9 +212,23 @@ function Day({user, setUser}){
 
     function handleDeleteSticker(removedSticker, removedDaySticker){
         //console.log(removedSticker)
-        const updatedStickers = stickers.filter((sticker) => (
-            sticker.id !== removedSticker.id ? true : false
-        ))
+        //might need to make a custom loop for this one. 
+        //temporatry work around is done 
+
+        let wasRemoved = false
+        // let updatedStickers = []
+
+        // for (let i =0; i < stickers.length; i++){
+        // }
+
+        const updatedStickers = stickers.filter((sticker) => {
+            if ((sticker.id !== removedSticker.id) || (wasRemoved === true)){
+                return true 
+            } else {
+                wasRemoved = true
+                return false 
+            }
+        })
         const updatedDayStickers = day.day_stickers.filter((joiner) => (
             joiner.id !== removedDaySticker.id ? true : false
         ))

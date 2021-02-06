@@ -7,10 +7,11 @@ import '../App.css'
 import { useState } from "react";
 
 
-function Calendar({days, month, setMonth, user}){
+function Calendar({ month, setMonth, user, setUser}){
 
     const [stickerMode, setStickerMode] = useState(false)
     const [stickerSelected, setStickerSelected] = useState(null)
+    const [days, setDays ] =useState(user.days)
     //console.log(user.days , "userdays")
     //console.log(stickerSelected)
 
@@ -44,9 +45,41 @@ function Calendar({days, month, setMonth, user}){
     //     )
     // })
 
+
+    function updateDaysForAddStickers(daysArray, newDaySticker){
+        const updatedDays = []
+
+        let dayID = newDaySticker.day.id
+
+        for (let i=0; i < daysArray.length; i++) {
+            if (daysArray[i].id == dayID) {
+                let updatedDay = daysArray[i];
+                updatedDay.stickers.push(newDaySticker.sticker)
+                updatedDay.day_stickers.push(newDaySticker)
+                //console.log(updatedDay)
+                
+                updatedDays.push(updatedDay);
+            } else {
+                updatedDays.push(daysArray[i]);
+            }
+        }
+        return updatedDays
+    }
+
+
     function handleNewDaySticker(newDaySticker){
-        //console.log.apply(newDaySticker)
+        console.log(newDaySticker)
         //console.log("asdfasdf")
+
+        let updatedUser = user 
+        console.log(user.day_stickers)
+
+        let updatedUserDays = updateDaysForAddStickers(user.days, newDaySticker)
+        setDays(updatedUserDays)
+
+        updatedUser.days = updatedUserDays
+        setUser(updatedUser)
+
     }
 
     const months =[

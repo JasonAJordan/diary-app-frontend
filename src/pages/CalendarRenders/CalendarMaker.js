@@ -13,8 +13,8 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
 
     function handleDayStickerClick(event) {
         const dayId = event.target.getAttribute("data-value")
-        console.log(event.target.getAttribute("data-value"), "dayID")
-        console.log(stickerSelected, "stickerID")
+        //console.log(event.target.getAttribute("data-value"), "dayID")
+        //console.log(stickerSelected, "stickerID")
         
         const data = {
             day_id: dayId,

@@ -100,7 +100,7 @@ function Day({user, setUser}){
                 let updatedDay = daysArray[i];
                 updatedDay.stickers = updatedStickers
                 updatedDay.day_stickers = updatedDayStickers
-                console.log(updatedDay)
+                //console.log(updatedDay)
                 setDay(updatedDay)           //might need this for bug
                 updatedDays.push(updatedDay);
             } else {
@@ -150,7 +150,7 @@ function Day({user, setUser}){
         setPosts([...posts, newPost])
         //setUser(user)
 
-        const updatedUser = user 
+        let updatedUser = user 
         const updatedDays = updateDaysForNewPost(params.id, user.days, newPost)
         //console.log(updatedUser, "the user before the update")
         //console.log(updatedUser.days, "usersdays before update")
@@ -167,7 +167,7 @@ function Day({user, setUser}){
         ))
         setPosts(updatedPosts)
 
-        const updatedUser = user 
+        let updatedUser = user 
         const updatedDays = updateDaysForDeletePost(params.id, user.days, updatedPosts)
         updatedUser.days = updatedDays
 
@@ -199,7 +199,7 @@ function Day({user, setUser}){
         const updatedDayStickers = [...dayStickers, newDayStickerJoiner]
         setDayStickers(updatedDayStickers)
 
-        const updatedUser = user
+        let updatedUser = user
         const updatedDays = updateDaysForAddStickers(user.days, updatedStickers, updatedDayStickers)
         updatedUser.days = updatedDays
         setUser(updatedUser)
@@ -217,7 +217,7 @@ function Day({user, setUser}){
         setStickers(updatedStickers)
         setDayStickers(updatedDayStickers)
 
-        const updatedUser = user
+        let updatedUser = user
         const updatedDays = updateDaysForDeleteStickers(user.days, updatedStickers, updatedDayStickers)
         updatedUser.days = updatedDays
         setUser(updatedUser)

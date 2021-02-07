@@ -2,13 +2,12 @@ import { useParams, Link } from "react-router-dom";
 
 function NavBar({user}){
 
-
     if (user){
         return (
             <div>Nav Bar for user
             <Link to={`/`}>Home</Link>
-            <Link to={`/`}>Calendar</Link>
-            <Link to={`/users/${user.id}`}>User</Link>
+            <Link to={`/calendar`}>MyCalendar</Link>
+            <Link to={`/users/${user.id}`}>MyPage</Link>
         </div>    
         )
     } else {

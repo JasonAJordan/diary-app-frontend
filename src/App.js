@@ -6,8 +6,11 @@ import Calendar from "./pages/Calendar";
 import Day from "./pages/Day"
 import User from "./pages/User"
 import SignUp from "./pages/SignUp"
+import Home from "./pages/Home"
 
 import NavBar from "./navBar/NavBar"
+
+
 
 import { Route, Switch } from 'react-router-dom';
 
@@ -51,8 +54,12 @@ function App() {
             <SignUp/>
         </Route>
 
-        <Route exact path="/">
+        <Route exact path="/calendar">
             <Calendar days ={user.days} month={month} setMonth={setMonth} user={user} setUser={setUser}/>
+        </Route>
+
+        <Route exact path="/">
+            <Home  user={user} />
         </Route>
 
       </Switch>

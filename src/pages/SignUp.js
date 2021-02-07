@@ -16,6 +16,7 @@ function SignUp (){
     // let yyyy = today.getFullYear();
     // let formated = mm + '/' + dd + '/' + yyyy;
     //console.log(formated)
+    
     function sleep(milliseconds) {
         const date = Date.now();
         let currentDate = null;

@@ -7,7 +7,7 @@ function User({user, setUser}){
 
     const mappedUserStickers = user.stickers.map((sticker) => {
         return (
-                <div>
+                <div key={sticker.id}>
                     <h4>{sticker.name}</h4>
                     <img src={sticker.image}/>
                 </div>

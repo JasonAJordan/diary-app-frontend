@@ -24,10 +24,6 @@ function Day({user, setUser}){
         }
     }
 
-    // const resultObject = search(Number(params.id), user.days)
-    // //console.log(params.id)
-    // console.log(user.days)
-    // console.log(resultObject)
 
     useEffect(() => {
         const resultObject = search(Number(params.id), user.days)
@@ -38,18 +34,37 @@ function Day({user, setUser}){
         setDayStickers(resultObject.day_stickers)
         setIsLoaded(true);
 
+
+
+
     },[params.id])
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:3000/days/${params.id}`)
-    //     .then((r) => r.json())
-    //     .then((data) => {
-    //         setDay(data);
-    //         setPosts(data.posts)
-    //         setStickers(data.stickers)
-    //         setIsLoaded(true);
-    //     })
-    // },[params.id])
+
+    //This step might be inefficient, probaly better to pull the daysOrdered from App.js  
+    const daysOrdered = user.days.sort((day1, day2) => {
+        return day1.date.localeCompare(day2.date)
+    })
+
+
+    //These steps here are needed tho.... remeber index starts at 0 but % messes up the logic a bit 
+    const currentIndex = daysOrdered.indexOf(day);
+    const nextIndex = ((currentIndex + 1) % daysOrdered.length);
+    const nextDay = daysOrdered[nextIndex]
+    //console.log(nextDay.id, "wut")
+
+    let prevIndex = 10 
+    if(currentIndex === 0){
+        prevIndex = daysOrdered.length -1
+    } else {
+        prevIndex = (currentIndex - 1) % (daysOrdered.length )
+     } 
+    //console.log(currentIndex, prevIndex) 
+    const prevDay = daysOrdered[prevIndex]
+    //console.log(prevDay.id, "tuw")
+    
+    
+    
+
 
 
     //The days update helper functions (there should be 4!)
@@ -63,10 +78,6 @@ function Day({user, setUser}){
             //console.log(daysArray[i].id, dayId)
             if (daysArray[i].id === Number(dayId)) {
                 const updatedPostArray = daysArray[i].posts.concat(updatedPost)
-                //console.log(daysArray[i], "the array in the if statment")
-                //console.log(daysArray[i].posts, "array.posts")
-                //console.log(daysArray[i][date])
-                //console.log(updatedPostArray, "what's being pushed into the day's post array")
                 let updatedDay = daysArray[i];
                 updatedDay.posts = updatedPostArray
                 updatedDays.push(updatedDay);
@@ -253,6 +264,8 @@ function Day({user, setUser}){
 
             This is the day page! 
             <h1>{day.date}</h1>
+            <Link to={`/days/${prevDay.id}`}><button >Prev</button></Link>
+            <Link to={`/days/${nextDay.id}`}><button >Next</button></Link>
             
             <h2>Stickers: {mappedStickers} </h2>
 

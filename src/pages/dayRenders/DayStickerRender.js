@@ -7,7 +7,7 @@ function DayStickerRender({sticker, handleDeleteSticker, dayStickers}){
         return (sticker.id === dayS.sticker_id)
     })
 
-    console.log(dayStickers, "daystickers")
+    //console.log(dayStickers, "daystickers")
 
     function handleDeleteClick(){
         //console.log(post.id)

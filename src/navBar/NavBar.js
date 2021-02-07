@@ -1,6 +1,12 @@
 import { useParams, Link } from "react-router-dom";
 
-function NavBar({user}){
+function NavBar({user, setUser}){
+
+    function handleLogOut(){
+
+        setUser(null)
+        console.log(user)
+    }
 
     if (user){
         return (
@@ -8,6 +14,7 @@ function NavBar({user}){
             <Link to={`/`}>Home</Link>
             <Link to={`/calendar`}>MyCalendar</Link>
             <Link to={`/users/${user.id}`}>MyPage</Link>
+            <Link to={`/`}><button onClick={handleLogOut}>Log out</button></Link>
         </div>    
         )
     } else {
@@ -17,6 +24,7 @@ function NavBar({user}){
                 <Link to={`/`}>Home</Link>
                 {}
                 {/* <Link to={`/users/${user.id}`}>User</Link> */}
+                
             </div>
         )
     }

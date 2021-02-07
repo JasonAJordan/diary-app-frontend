@@ -60,7 +60,8 @@ function Day({user, setUser}){
         //console.log(dayId)
 
         for (let i=0; i < daysArray.length; i++) {
-            if (daysArray[i].id == dayId) {
+            //console.log(daysArray[i].id, dayId)
+            if (daysArray[i].id === Number(dayId)) {
                 const updatedPostArray = daysArray[i].posts.concat(updatedPost)
                 //console.log(daysArray[i], "the array in the if statment")
                 //console.log(daysArray[i].posts, "array.posts")
@@ -81,7 +82,7 @@ function Day({user, setUser}){
         const updatedDays = []
 
         for (let i=0; i < daysArray.length; i++) {
-            if (daysArray[i].id == dayId) {
+            if (daysArray[i].id === Number(dayId)) {
                 let updatedDay = daysArray[i];
                 updatedDay.posts = updatedPosts
                 updatedDays.push(updatedDay);
@@ -96,7 +97,7 @@ function Day({user, setUser}){
         const updatedDays = []
 
         for (let i=0; i < daysArray.length; i++) {
-            if (daysArray[i].id == params.id) {
+            if (daysArray[i].id === Number(params.id)) {
                 let updatedDay = daysArray[i];
                 updatedDay.stickers = updatedStickers
                 updatedDay.day_stickers = updatedDayStickers
@@ -114,7 +115,7 @@ function Day({user, setUser}){
         const updatedDays = []
 
         for (let i=0; i < daysArray.length; i++) {
-            if (daysArray[i].id == params.id) {
+            if (daysArray[i].id === Number(params.id)) {
                 let updatedDay = daysArray[i];
                 updatedDay.stickers = updatedStickers
                 updatedDay.day_stickers = updatedDayStickers

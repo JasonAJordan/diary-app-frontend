@@ -11,7 +11,7 @@ import LoginPage from "./pages/LoginPage"
 
 import NavBar from "./navBar/NavBar"
 
-
+//import API from "./adapters/API"
 
 import { Route, Switch } from 'react-router-dom';
 
@@ -20,6 +20,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [month, setMonth] = useState(0)
   const [loaded, setLoaded] = useState(false)
+
 
 
   useEffect(() => { 

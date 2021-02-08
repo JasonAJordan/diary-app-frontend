@@ -34,9 +34,6 @@ function Day({user, setUser}){
         setDayStickers(resultObject.day_stickers)
         setIsLoaded(true);
 
-
-
-
     },[params.id])
 
 
@@ -102,6 +99,22 @@ function Day({user, setUser}){
             }
         }
         return updatedDays
+    }
+
+    function updateDaysForEditPost(daysArray, updatedPostsArray){
+        const updatedDays = []
+
+        for (let i=0; i < daysArray.length; i++) {
+            if (daysArray[i].id === Number(params.id)) {
+                let updatedDay = daysArray[i];
+                updatedDay.posts = updatedPostsArray
+                updatedDays.push(updatedDay);
+            } else {
+                updatedDays.push(daysArray[i]);
+            }
+        }
+        return updatedDays
+
     }
 
     function updateDaysForAddStickers(daysArray, updatedStickers, updatedDayStickers){
@@ -199,7 +212,13 @@ function Day({user, setUser}){
                 return post
             }
         })
-        setPosts(updatedPostsArray)
+        setPosts(updatedPostsArray) //This sets the posts for the day not the whole user!
+
+        let updatedUser = user 
+        const updatedDays = updateDaysForEditPost(user.days, updatedPostsArray)
+        updatedUser.days = updatedDays
+        setUser(updatedUser)
+        //console.log(user, "adf")
     }
 
     //sticker Handles 

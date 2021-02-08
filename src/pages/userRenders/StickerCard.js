@@ -4,6 +4,7 @@ function StickerCard({sticker, onDeleteSticker}){
 
         //console.log(post.id)
         const id = sticker.id.toString()
+        console.log(id)
         fetch(`http://localhost:3000/stickers/${id}`, {
             method: "DELETE",
         });

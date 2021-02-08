@@ -31,6 +31,10 @@ function EditBioForm({user, handleUserEdit, setEditmode}){
 
     }
 
+    function handleClose(){
+        setEditmode(false)
+    }
+
     return (
         <div>
         <h2>Edit User</h2>
@@ -43,7 +47,8 @@ function EditBioForm({user, handleUserEdit, setEditmode}){
             value={formData.bio}
             onChange={handleFormChange}
             />
-            <button type="submit">Update Bio! </button>
+            <button onClick={handleClose}>CLose Edit</button>
+            <button type="submit">Never mind</button>
         </form>
     </div>
     )

@@ -22,8 +22,10 @@ function PostRender({post, onDeletePost, handleEditPost, day}){
         <div>
             
             <h3>Title: {post.title}</h3>
-            <h4>Color: {post.text_color}</h4>
-            <p>{post.context}</p>
+            {/* <h4>Color: {post.text_color}</h4> */}
+            {/* <p style={`color:${post.text_color}`}>{post.context}</p> */}
+            {/* <p>{post.context}</p> */}
+            <p style={{color: post.text_color}}>{post.context}</p>
 
             {(editmode === true)
             ? <EditPostForm post={post} handleEditPost={handleEditPost} day={day} setEditmode={setEditmode}/>

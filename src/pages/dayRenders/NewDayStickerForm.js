@@ -35,7 +35,7 @@ function NewDaySticker({handleNewDaySticker, day, userStickers}){
     const userStickerMapped = userStickers.map((sticker) => {
         return (
                 <div key={sticker.id}>
-                    <img src={sticker.image}/>
+                    <img src={sticker.image} width="80" height="80"/>
                     <input type="radio" name="sticker_id" value={sticker.id} onChange={handleFormChange}/>
                     <label >{sticker.name}</label>
                 </div> 

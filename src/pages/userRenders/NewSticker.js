@@ -4,9 +4,8 @@ function NewSticker({ user, handleNewSticker}){
 
     const [formData, setFormData] = useState({
         user_id: user.id,
-        image: "https://via.placeholder.com/50",
+        image: {},
         name: "",
-        upload_image: "",
     })
 
     function handleFormChange(event){
@@ -16,18 +15,28 @@ function NewSticker({ user, handleNewSticker}){
 
     }
 
+    function handleFormChangeForUpload(e){
+        e.persist()
+        setFormData({...formData,
+            [e.target.name]: e.target.files[0]
+        })
+    }
+
 
     function handleSubmit(event){
         event.preventDefault()
-        //const formData2 = new FormData(event.target)
+        console.log(formData)
+        const form = new FormData()
+        form.append("user_id", formData.user_id)
+        form.append("image", formData.image)
+        form.append("name", formData.name)
 
         fetch(`http://localhost:3000/stickers`,{
             method: 'POST',
-            headers: {
-                "Authorization": localStorage.getItem("token"),
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
+            // headers: {
+            //     'Content-Type': 'application/json',
+            // },
+            body: form,
             })
         .then(r => r.json())
         .then(newSticker => handleNewSticker(newSticker))
@@ -44,8 +53,8 @@ function NewSticker({ user, handleNewSticker}){
                 />
 
                 <label>Upload a picture (hopefully)</label>
-                <input type="file" name="upload_image" accept="image/*" 
-                onChange={handleFormChange}
+                <input type="file" name="image" 
+                onChange={handleFormChangeForUpload}
                 />
 
                 <button type="submit">Add the New Sticker! </button>

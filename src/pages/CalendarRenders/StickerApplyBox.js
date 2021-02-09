@@ -12,10 +12,6 @@ function StickerApplyBox({user, stickerMode, setStickerMode, setStickerSelected}
         setStickerSelected(event.target.value)
         console.log(event.target.value, "stickerSelected")
     }
-//     <form>
-//     <input type="radio" name="choice" value="yes"> Yes
-//     <input type="radio" name="choice" value="no"> No
-//     </form>
 
     const stickersMapped = user.stickers.map((sticker) => {
         return <UserStickers sticker={sticker} key={sticker.id}/>

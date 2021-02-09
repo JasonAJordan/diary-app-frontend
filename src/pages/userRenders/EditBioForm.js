@@ -47,7 +47,7 @@ function EditBioForm({user, handleUserEdit, setEditmode}){
             value={formData.bio}
             onChange={handleFormChange}
             />
-            <button onClick={handleClose}>CLose Edit</button>
+            <button onClick={handleClose}>Submit</button>
             <button type="submit">Never mind</button>
         </form>
     </div>

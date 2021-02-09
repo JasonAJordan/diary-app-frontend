@@ -26,27 +26,7 @@ function Calendar({ month, setMonth, user, setUser}){
     
     const daysSliced = daysOrdered.slice(sliceMonthStart[month], sliceMonthEnd[month])
 
-    //Moved to CalendarMaker.js! Needed to more dynamic
-    // const daysMapped = daysSliced.map((day) => {
-    //     return (
-    //         <Link to={`days/${day.id}`} key={day.id}>
-    //             <div > 
-    //                 <h4>{day.date.slice(0,5)}</h4>
-    //             </div>
-    //         </Link>
-    //     )
-    // })
-
-    // const daysMappedStickerMode = daysSliced.map((day) => {
-    //     return (
-    //             <div key={day.id}> 
-    //                 <h4>{day.date.slice(0,5)}</h4>
-    //             </div>
-    //     )
-    // })
-
-
-    function updateDaysForAddStickers(daysArray, newDaySticker){
+    function updateDaysForAddStickers(daysArray,newDayStickerJoiner, newDaySticker ){
         const updatedDays = []
 
         let dayID = newDaySticker.day.id
@@ -55,8 +35,8 @@ function Calendar({ month, setMonth, user, setUser}){
             if (daysArray[i].id === dayID) {
                 let updatedDay = daysArray[i];
                 updatedDay.stickers.push(newDaySticker.sticker)
-                updatedDay.day_stickers.push(newDaySticker)
-                //console.log(updatedDay)
+                updatedDay.day_stickers.push(newDayStickerJoiner)
+                console.log(updatedDay)
                 
                 updatedDays.push(updatedDay);
             } else {
@@ -67,17 +47,20 @@ function Calendar({ month, setMonth, user, setUser}){
     }
 
 
+
     function handleNewDaySticker(newDaySticker){
-        console.log(newDaySticker)
-        //console.log("asdfasdf")
 
-        let updatedUser = user 
-        console.log(user.day_stickers)
+        const newDayStickerJoiner = {
+            id: newDaySticker.id,
+            day_id: newDaySticker.day.id,
+            sticker_id: newDaySticker.sticker.id,
+        }
 
-        let updatedUserDays = updateDaysForAddStickers(user.days, newDaySticker)
-        setDays(updatedUserDays)
-
-        updatedUser.days = updatedUserDays
+        let updatedUser = user
+        const updatedDays = updateDaysForAddStickers(user.days, newDayStickerJoiner, newDaySticker)
+        setDays(updatedDays)
+        updatedUser.days = updatedDays
+        
         setUser(updatedUser)
 
     }

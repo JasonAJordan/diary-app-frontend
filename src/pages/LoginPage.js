@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function LoginPage ({user, setUser}){
 
     const [users, setUsers] = useState(null)
+    const [isLogin, setIsLogin] = useState(false)
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -27,32 +29,44 @@ function LoginPage ({user, setUser}){
 
     function handleLogin(event){
         event.preventDefault()
-        console.log(formData)
+        //console.log(formData)
+        let success = false
 
         for(let i = 0; i < users.length; i++){
             let cond1 = (users[i].username === formData.username)
             let cond2 = (users[i].password === formData.password)
+            //console.log(users[i].username)
             if (cond1 && cond2){
-                
                 setUser(users[i])
-                
+                success = true
+                setIsLogin(true)
             }
+        }
+        if (success){
+            loginSucess()
+        } else {
+            loginFail()
         }
 
     }
 
     function loginSucess(){
         alert("Successful Login")
+        // window.location = "/"
     }
 
-    function myFunction() {
-        alert("I am an alert box!");
-      }
+    function loginFail() {
+        alert("Wrong Username or password");
+    }
+
+    function handleWelcomeBack(){
+
+    }
 
 
     if (!users) {
         return <h1> Loading fake Auth</h1>
-    } else {
+    } else if (!isLogin){
         return (
             <div>
                 <h1> Login to your JournalSoft</h1>
@@ -71,22 +85,15 @@ function LoginPage ({user, setUser}){
                 {/* <button onClick={myFunction}>Try it</button> */}
             </div>
         )
+    } else {
+        return (
+            
+            <button onClick={handleWelcomeBack}><Link to={"/calendar"}> Welcome back! </Link></button>
+            
+        )
     }
 
 }
 
 export default LoginPage
 
-{/* <div> 
-<h1>Login to your JournalSoft</h1>
-<form >
-
-    <h4 id="login">Login</h4>
-    <label for="email"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" required>
-
-    <button type="submit" class="btn">Login</button>
-    <button type="button" class="btn-cancel" onclick="closeForm()">Close</button>
-
-</form>
-</div> */}

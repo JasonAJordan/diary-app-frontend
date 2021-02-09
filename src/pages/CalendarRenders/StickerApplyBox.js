@@ -2,7 +2,6 @@ import UserStickers from "./UserStickers"
 
 function StickerApplyBox({user, stickerMode, setStickerMode, setStickerSelected}){
 
-
     //console.log(user.stickers)
 
     function handleToggleMode(event){
@@ -27,9 +26,13 @@ function StickerApplyBox({user, stickerMode, setStickerMode, setStickerSelected}
 
             <button onClick={handleToggleMode}>Enable Adding a Sticker </button>
 
-            <form onChange={handleStickerChange}>
-                {stickersMapped}
-            </form>
+            {(stickerMode === true)
+                ?<form onChange={handleStickerChange}>
+                    {stickersMapped}
+                </form>
+                : null
+            }
+
             
             
         </div>

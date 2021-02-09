@@ -12,7 +12,7 @@ function NewSticker({ user, handleNewSticker}){
         setFormData({...formData,
             [event.target.name]: event.target.value
         })
-
+        console.log(formData.image)
     }
 
     function handleFormChangeForUpload(e){

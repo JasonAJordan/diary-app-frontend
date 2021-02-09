@@ -53,7 +53,7 @@ function App() {
         </Route>
 
         <Route exact path="/signup">
-            <SignUp/>
+            <SignUp setUser={setUser}/>
         </Route>
 
         <Route exact path="/calendar">

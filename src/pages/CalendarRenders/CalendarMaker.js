@@ -12,6 +12,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
 
 
     function handleDayStickerClick(event) {
+        if (stickerSelected !== null){
         const dayId = event.target.getAttribute("data-value")
         //console.log(event.target.getAttribute("data-value"), "dayID")
         //console.log(stickerSelected, "stickerID")
@@ -30,6 +31,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
             })
         .then(r => r.json())
         .then(newDaySticker => handleNewDaySticker(newDaySticker))
+        }
 
     }
 
@@ -57,7 +59,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                     <Link to={`days/${day.id}`} key={day.id}>
                     <div className="calendarDay" >
                         {day.date.slice(0,5)}<br/>
-                        <div style={{color: day.posts[0].text_color}}>Entry Made</div>
+                        <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
                         {postStickers(day.stickers)}
                     </div>
                     </Link>
@@ -67,7 +69,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                     <Link to={`days/${day.id}`} key={day.id}>
                     <div className="calendarDay" >
                         {day.date.slice(0,5)}<br/>
-                        <div style={{color: day.posts[0].text_color}}>Entry Made</div>
+                        <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
                     </div>
                     </Link>
                 ) 
@@ -92,8 +94,8 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                 return (
                     <div key={day.id} className="calendarDay" onClick={handleDayStickerClick} data-value={day.id}>
                         {day.date.slice(0,5)}<br/>
-                        Post Made!
-                        <br/>
+                        <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
+                        
                         {postStickers(day.stickers)}
                     </div>
                 )
@@ -101,7 +103,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                 return (
                     <div key={day.id} className="calendarDay" onClick={handleDayStickerClick} data-value={day.id}>
                         {day.date.slice(0,5)}<br/>
-                        Post Made!
+                        <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
                     </div>
                 ) 
             } else if (day.stickers[0]){

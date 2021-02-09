@@ -52,7 +52,7 @@ function Calendar({ month, setMonth, user, setUser}){
         let dayID = newDaySticker.day.id
 
         for (let i=0; i < daysArray.length; i++) {
-            if (daysArray[i].id == dayID) {
+            if (daysArray[i].id === dayID) {
                 let updatedDay = daysArray[i];
                 updatedDay.stickers.push(newDaySticker.sticker)
                 updatedDay.day_stickers.push(newDaySticker)

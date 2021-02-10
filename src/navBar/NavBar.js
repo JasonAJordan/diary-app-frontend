@@ -14,7 +14,10 @@ function NavBar({user, setUser}){
             <Link to={`/`}>Home</Link>
             <Link to={`/calendar`}>MyCalendar</Link>
             <Link to={`/users/${user.id}`}>MyPage</Link>
+            <Link to={`/notes`}>My Notes</Link>
+            
             <Link to={`/`}><button onClick={handleLogOut}>Log out</button></Link>
+            
         </div>    
         )
     } else {

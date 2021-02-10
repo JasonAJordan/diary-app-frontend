@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 
-function NewPostForm({handleNewPost, day}){
+function NewNoteForm ({user, handleNewNote}){
 
-    //handleNewPost 
+    //console.log(notes)
 
     const [formData, setFormData] = useState({
 
-        day_id: day.id,
+        user_id: user.id,
         title: "",
         context: "",
         text_color: "#000000",
@@ -24,7 +24,7 @@ function NewPostForm({handleNewPost, day}){
         event.preventDefault()
         //console.log(formData)
 
-        fetch(`http://localhost:3000/posts`,{
+        fetch(`http://localhost:3000/notes`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,13 +32,12 @@ function NewPostForm({handleNewPost, day}){
             body: JSON.stringify(formData),
             })
         .then(r => r.json())
-        .then(newPost => handleNewPost(newPost))
+        .then(newNote => handleNewNote(newNote))
     }
     
-
     return (
-        <div>
-            <h2>Write a new Entry</h2>
+        <div >
+            <h2>Write a new Scribble</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="title" placeholder="Title"
                 value={formData.name}
@@ -52,11 +51,13 @@ function NewPostForm({handleNewPost, day}){
                 value={formData.color}
                 onChange={handleFormChange}
                 />
-                <button type="submit">Add the Entry! </button>
+                <button type="submit">Add the Scribble! </button>
             </form>
         </div>
-        
     )
 }
 
-export default NewPostForm
+
+
+
+export default NewNoteForm

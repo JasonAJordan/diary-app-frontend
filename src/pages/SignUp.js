@@ -149,18 +149,22 @@ function SignUp ({setUser}){
         <div>
             <h2>New User</h2>
             <form onSubmit={handleSubmit}>
+                <label>UserName</label>
                 <input type="text" name="username" placeholder="Username"
                 value={formData.username}
                 onChange={handleFormChange}
                 />
+                <label>Password</label>
                 <input type="text" name="password" placeholder="Password"
                 value={formData.password}
                 onChange={handleFormChange}
                 />
+                <label>Your Name</label>
                 <input type="text" name="name" placeholder="Name"
                 value={formData.name}
                 onChange={handleFormChange}
                 />
+                <label>About Yourself</label>
                 <input type="textarea" name="bio" placeholder="About Yourself!"
                 value={formData.bio}
                 onChange={handleFormChange}

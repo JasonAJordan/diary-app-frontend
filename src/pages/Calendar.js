@@ -98,25 +98,32 @@ function Calendar({ month, setMonth, user, setUser}){
     }
 
     return(
-        <div className="Wholecalendar">
-            <h2>Calendar Here!</h2>
+        
+        <div class="grid-container">
 
-            <button onClick={handelPrevMonth}>  Prev </button>
-            <h3>{months[month]}</h3>
-            <button onClick={handleNextMonth}> Next </button>
+            <div className="Month-Name">
+                <button onClick={handelPrevMonth}>  Prev </button>
+                <a>{months[month]}</a>
+                <button onClick={handleNextMonth}> Next </button>
+            </div>
 
+            <div className="Calendar">
             <CalendarMaker daysSliced={daysSliced} 
             month={month} stickerMode={stickerMode}
             stickerSelected={stickerSelected}
             handleNewDaySticker={handleNewDaySticker}
             />
+            </div>
 
+            <div className="Edit-Box">
             <StickerApplyBox user={user} 
             stickerMode ={stickerMode} 
             setStickerMode={setStickerMode}
             setStickerSelected={setStickerSelected}
             />
+            </div>
         </div>
+        
     )
 }
 

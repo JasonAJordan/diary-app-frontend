@@ -13,6 +13,7 @@ import Notes from "./pages/Notes"
 import NavBar from "./navBar/NavBar"
 
 //import API from "./adapters/API"
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { Route, Switch } from 'react-router-dom';
 
@@ -39,9 +40,9 @@ function App() {
     return <h2> LOADING </h2>
   } else {
     return (
-      <div>
+      <div className="background">
       <NavBar user={user} setUser={setUser}/>
-      Diary App 
+      
 
       <Switch>
 
@@ -65,7 +66,7 @@ function App() {
           <LoginPage setUser={setUser} user={User}/>
         </Route>
 
-        <Route>
+        <Route exact path="/notes">
           <Notes user={user} setUser={setUser}/>
         </Route>
 
@@ -76,7 +77,7 @@ function App() {
       </Switch>
       
 
-      <br></br><br></br>
+      
       </div>
     );
   }

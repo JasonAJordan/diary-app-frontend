@@ -1,8 +1,8 @@
 function UserStickers({sticker}){
 
     return (
-        <div> 
-            <h3>{sticker.name}</h3>
+        <div className="stickerCard"> 
+            <a>{sticker.name}</a>
             <input type="radio" name="choice" value={sticker.id}/>
             <img src={sticker.image} alt={sticker.name} width="40" height="40" key={sticker.id}/>
         </div>

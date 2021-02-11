@@ -1,4 +1,8 @@
 import { useParams, Link } from "react-router-dom";
+//import { Nav } from "react-bootstrap/Nav"; NOT BOOTSTRAP I hate this
+//import styled from 'styled-components';
+
+import '../css/NavBar.css';
 
 function NavBar({user, setUser}){
 
@@ -10,19 +14,26 @@ function NavBar({user, setUser}){
 
     if (user){
         return (
-            <div>Nav Bar for user
-            <Link to={`/`}>Home</Link>
-            <Link to={`/calendar`}>MyCalendar</Link>
-            <Link to={`/users/${user.id}`}>MyPage</Link>
-            <Link to={`/notes`}>My Notes</Link>
+            <div className="navBar">
+             
             
-            <Link to={`/`}><button onClick={handleLogOut}>Log out</button></Link>
+            <Link to={`/`}><a className="Nav-Bar-Options">Home</a></Link>
+            <Link to={`/calendar`}><a className="Nav-Bar-Options">My Calendar</a></Link>
+            <Link to={`/notes`}><a className="Nav-Bar-Options">My Notes</a></Link>
+            <Link to={`/users/${user.id}`}><a className="Nav-Bar-Options">My Page</a></Link>
+
+
+            <div class="button-div"><Link to={`/`}><button onClick={handleLogOut}>Log out</button></Link></div>
+            <a className="username">{user.name}</a>
+
             
-        </div>    
+            
+            </div>    
         )
     } else {
         return (
-            <div>NavBar for not Logined 
+            <div>
+               
 
                 <Link to={`/`}>Home</Link>
                 {}

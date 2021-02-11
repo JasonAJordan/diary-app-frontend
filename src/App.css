@@ -2,10 +2,65 @@
   text-align: center;
 }
 
+.background {
+  background: rgb(249,175,255);
+  background: linear-gradient(0deg, rgba(249,175,255,1) 0%, rgba(206,200,255,1) 18%, rgba(214,215,255,1) 34%, rgba(186,228,255,1) 49%, rgba(179,233,255,1) 67%, rgba(149,255,253,1) 100%); 
+  min-height: 790px; 
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 0.4fr 1.6fr 1.7fr 0.3fr;
+  grid-template-rows: 0.2fr 0.5fr 2.6fr 0.7fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "Header Header Header Header"
+    ". Month-Name Month-Name ."
+    ". Calendar Calendar ."
+    ". Edit-Box Edit-Box .";
+}
+
+.Header { grid-area: Header; }
+
+.Month-Name { grid-area: Month-Name; 
+  text-align: center;
+  /* float: left; */
+  padding-bottom: 6px;
+  max-height: 100px;
+  justify-content: center;
+  height: 100px;
+  line-height: 100px;
+}
+.Month-Name a {
+  padding: 6px;
+  font-size: 36px;
+}
+
+.Calendar { grid-area: Calendar; 
+  text-align: center;
+  max-height: 800px;
+
+}
+
+.Edit-Box { grid-area: Edit-Box; 
+  text-align: center;
+  max-height: 400px;
+  padding-top: 16px;
+  border: red
+
+}
+
+.stickerBox {
+  border-style: inset;
+  display: flex;
+  flex-direction: row;
+}
+.stickerCard {
+  padding: 4px;
+}
 
 .Wholecalendar {
   text-align: center;
-    
 
 }
 
@@ -13,18 +68,11 @@
   margin: auto;
   max-width: 840px;
   width: 840;
-  padding: 20px solid aqua;
+  padding: 20px solid rgb(0, 255, 255,);
   border: 5px solid rgb(17, 255, 176);
-  background-color: aquamarine;
+  background-color: rgba(173, 255, 228, 0.4);
 }
 
-/* not being used  */
-.calendarbackground{ 
-  max-width: 860px;
-  width: 860px;
-  border: 5px brown;
-
-}
 
 .calendarDayLabels {
   max-width: 118px;
@@ -40,8 +88,8 @@
   max-width: 118px;
   width: 118px;
   float: left;
-  max-height: 68px;
-  height: 68px;
+  max-height: 78px;
+  height: 78px;
   border: 1px solid black;
 }
 

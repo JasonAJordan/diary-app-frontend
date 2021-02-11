@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+//import '../css/stars.css';
 
 function Home ({user}){
 
@@ -7,6 +8,8 @@ function Home ({user}){
             <div> 
                 <h1>Welcome to JournalSoft 2021 </h1>
                 <h2>Welcome Back {user.name}</h2>
+
+                
             </div>
         )
     } else {

@@ -24,13 +24,11 @@ function StickerApplyBox({user, stickerMode, setStickerMode, setStickerSelected}
 
             {(stickerMode === true)
                 ?<form onChange={handleStickerChange}>
-                    {stickersMapped}
+                    <div class="stickerBox">{stickersMapped}</div>
                 </form>
                 : null
             }
 
-            
-            
         </div>
     )
 

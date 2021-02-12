@@ -34,7 +34,7 @@ function NewDaySticker({handleNewDaySticker, day, userStickers}){
 
     const userStickerMapped = userStickers.map((sticker) => {
         return (
-                <div key={sticker.id}>
+                <div className="sticker" key={sticker.id}>
                     <img src={sticker.image} width="80" height="80"/>
                     <input type="radio" name="sticker_id" value={sticker.id} onChange={handleFormChange}/>
                     <label >{sticker.name}</label>
@@ -46,7 +46,9 @@ function NewDaySticker({handleNewDaySticker, day, userStickers}){
         <div>
             <h2>Add a new Sticker! </h2>
             <form onSubmit={handleSubmit}>
+                <div className="sticker-wrap">
                 {userStickerMapped}
+                </div>
 
                 <button type="submit">Apply the Sticker!</button>
             </form>

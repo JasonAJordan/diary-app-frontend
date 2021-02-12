@@ -36,19 +36,24 @@ function EditBioForm({user, handleUserEdit, setEditmode}){
     }
 
     return (
-        <div>
-        <h2>Edit User</h2>
+        <div className="edit-bio-form">
+        <h3>Edit User</h3>
         <form onSubmit={handleSubmit}>
+            <label>Name: </label>
             <input type="text" name="name" placeholder={user.name}
             value={formData.name}
             onChange={handleFormChange}
             />
-            <input type="textarea" name="bio" placeholder={user.bio}
+            <br/>
+
+            <label className="bio-form-label">Bio:</label>
+            <textarea className="input-bio" type="textarea" name="bio" placeholder={user.bio}
             value={formData.bio}
             onChange={handleFormChange}
             />
-            <button onClick={handleClose}>Submit</button>
-            <button type="submit">Never mind</button>
+            <br/>
+            <button onClick={handleClose}>Never Mind</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
     )

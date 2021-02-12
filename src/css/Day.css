@@ -1,0 +1,71 @@
+.grid-container-day {
+    display: grid;
+    grid-template-columns: 0.6fr 1.3fr 0.9fr 1.7fr 0.5fr;
+    grid-template-rows: 0.2fr 1.7fr 0.9fr 1.9fr 0.3fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Header Header Header Header Header"
+      ". Info Entries Entries ."
+      ". StickersAdd Entries Entries ."
+      ". StickersAdd New-Entries New-Entries ."
+      ". . . . .";
+  }
+  
+  .Info { grid-area: Info; 
+   padding-top: 10px;
+}
+
+
+.Date a {
+   font-size: 36px; 
+   padding: 8px;
+}
+  
+  .Entries { grid-area: Entries; 
+
+    max-width: 700px;
+    width: 700px;
+}
+  
+  .Header { grid-area: Header; }
+  
+  .New-Entries { grid-area: New-Entries; }
+  
+  .StickersAdd { grid-area: StickersAdd; }
+
+  .sticker-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* border: red 2px; */
+  }
+  .sticker {
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 6px;
+    margin: 3px;
+    padding: 4px;
+}
+.sticker a {
+    padding: 4px;
+}
+
+.sticker button {
+    float: right;
+    margin-bottom: 4px;
+    border-radius: 15px;
+    background-color: rgb(220, 20, 60, .1);
+}
+
+
+
+
+/* <div class="grid-container">
+  <div class="Info"></div>
+  <div class="Entries"></div>
+  <div class="Header"></div>
+  <div class="New-Entries"></div>
+  <div class="StickersAdd"></div>
+</div> */

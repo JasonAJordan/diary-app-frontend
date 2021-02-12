@@ -70,7 +70,7 @@ function App() {
           <Notes user={user} setUser={setUser}/>
         </Route>
 
-        <Route exact path="/">
+        <Route path="/">
             <Home  user={user} />
         </Route>
 

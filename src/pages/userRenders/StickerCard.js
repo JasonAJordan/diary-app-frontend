@@ -13,10 +13,12 @@ function StickerCard({sticker, onDeleteSticker}){
 
 
     return (
-        <div key={sticker.id}>
-        <h4>{sticker.name}</h4>
-        <img src={sticker.image} width="80" height="80"/>
-        <button onClick={onDeleteClick}>Delete</button>
+        <div key={sticker.id} className="sticker">
+            <a>{sticker.name}</a>
+            <button onClick={onDeleteClick}>x</button>
+            <br/>
+            <img src={sticker.image} width="80" height="80"/>
+            
         </div>
     )
 

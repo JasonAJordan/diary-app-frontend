@@ -5,6 +5,7 @@ import NewPostForm from "./dayRenders/NewPostForm";
 import NewDayStickerForm from "./dayRenders/NewDayStickerForm";
 import PostRender from "./dayRenders/PostRender";
 
+import '../css/Day.css';
 
 function Day({user, setUser}){
 
@@ -279,22 +280,35 @@ function Day({user, setUser}){
     if (!isLoaded) return <h2>Loading... or maybe you do not have access to this post.</h2>
     else {
     return(
-            <div>
+            <div className="grid-container-day">
 
-            This is the day page! 
-            <h1>{day.date}</h1>
-            <Link to={`/days/${prevDay.id}`}><button >Prev</button></Link>
-            <Link to={`/days/${nextDay.id}`}><button >Next</button></Link>
+
+            <div class="Info">
+                <div class="Date">
+                    <Link to={`/days/${prevDay.id}`}><button >Prev</button></Link>
+                    <a>{day.date}</a>
+                    <Link to={`/days/${nextDay.id}`}><button >Next</button></Link>
+                </div>
+
+                
+                <a>Stickers:</a><div className="sticker-wrap"> {mappedStickers} </div>
+            </div>
             
-            <h2>Stickers: {mappedStickers} </h2>
-
-            <div> 
-                <h2>Posts:</h2>
-                {mappedPosts}
+            <div class="Entries">
+                <div> 
+                    <h2>Posts:</h2>
+                    {mappedPosts}
+                </div>
             </div>
 
+            <div class="New-Entries">
             <NewPostForm day={day} handleNewPost={handleNewPost}/>
-            <NewDayStickerForm day={day} handleNewDaySticker={handleNewDaySticker} userStickers={user.stickers}/>
+            </div>
+
+            <div class="StickersAdd">
+                <NewDayStickerForm day={day} handleNewDaySticker={handleNewDaySticker} userStickers={user.stickers}/>
+            </div>
+            
 
             <br></br>
             <br></br>

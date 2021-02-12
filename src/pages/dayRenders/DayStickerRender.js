@@ -19,9 +19,9 @@ function DayStickerRender({sticker, handleDeleteSticker, dayStickers}){
     }
 
     return (
-        <div>
+        <div className="sticker">
             <img src={sticker.image} width="80" height="80"/>
-            <button onClick={handleDeleteClick}>Erase</button>
+            <button onClick={handleDeleteClick}><a>x</a></button>
         </div>
         
     )

@@ -9,7 +9,7 @@ function NavBar({user, setUser}){
     function handleLogOut(){
 
         setUser(null)
-        console.log(user)
+        //console.log(user)
     }
 
     if (user){
@@ -23,7 +23,7 @@ function NavBar({user, setUser}){
             <Link to={`/users/${user.id}`}><a className="Nav-Bar-Options">My Page</a></Link>
 
 
-            <div class="button-div"><Link to={`/`}><button onClick={handleLogOut}>Log out</button></Link></div>
+            <div className="button-div"><Link to={`/`}><button onClick={handleLogOut}>Log out</button></Link></div>
             <a className="username">{user.name}</a>
 
             

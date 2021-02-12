@@ -44,20 +44,27 @@ function NewSticker({ user, handleNewSticker}){
 
 
     return (
-        <div> New sticker form place holder 
+        <div className="newSticker"> 
             <form onSubmit={handleSubmit}>
-                <label>New Sticker's Name</label>
+
+                <h3>Upload a picture</h3>
+                
+                <div className="uploadinfo">
+                <label>New Sticker's Name:</label>
                 <input type="textarea" name="name" placeholder="Sticker Name"
                     value={formData.name}
                     onChange={handleFormChange}
                 />
 
-                <label>Upload a picture (hopefully)</label>
                 <input type="file" name="image" 
                 onChange={handleFormChangeForUpload}
                 />
+                </div>
 
-                <button type="submit">Add the New Sticker! </button>
+                
+                <div className="submit-button">
+                    <button type="submit">Add the New Sticker! </button>
+                </div>
             </form>
 
 

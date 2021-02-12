@@ -3,6 +3,8 @@ import EditBioForm from "./userRenders/EditBioForm"
 import NewSticker from "./userRenders/NewSticker"
 import StickerCard from "./userRenders/StickerCard";
 
+import '../css/User.css';
+
 function User({user, setUser}){
 
     const [editmode, setEditmode] = useState(false)
@@ -47,24 +49,48 @@ function User({user, setUser}){
     }
 
     return(
-        <div>
-            <h2>This is the User Page! </h2>
-
+        <div className="grid-container-user">
+            
+            <div className="Bio">
             <h3>Username: {user.username}</h3>
             <h3>Name: {user.name}</h3>
             <h3>Bio: {user.bio}</h3>
-            <h3>Your Stickers:</h3>
-            {mappedUserStickers}
+            <p>Stickers: {user.stickers.length}</p>
+            <p>Journal Entries: {user.posts.length}</p>
+            <p>Sribbles Entries: {user.notes.length}</p>
+            <p>Stickers Placed: {user.day_stickers.length}</p>
+            </div>
             
-            <NewSticker user={user} handleNewSticker={handleNewSticker}/>
+            <div className="yourStickers">
+            <h3>Your Stickers:</h3>
 
+            <div className="stickers">
+                {mappedUserStickers}
+            </div>
+            </div>
+
+            <div className="editForm">
             {(editmode === true)
                 ? <EditBioForm user={user} handleUserEdit={handleUserEdit} setEditmode={setEditmode}/>
-                :<button onClick={handleEditClick}>Edit Bio</button>
+                :<button className="edit-bio-bttn" onClick={handleEditClick}>Edit Bio</button>
             }
+            </div>
+
+            <div className="upload">
+            <NewSticker user={user} handleNewSticker={handleNewSticker}/>
+            </div>
+
 
         </div>
     )
 }
 
 export default User
+
+/* <div class="grid-container">
+  <div class="Header"></div>
+  <div class="Bio"></div>
+  <div class="yourStickers"></div>
+  <div class="upload"></div>
+  <div class="editForm"></div>
+</div> */

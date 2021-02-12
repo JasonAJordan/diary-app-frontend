@@ -102,9 +102,11 @@ function Calendar({ month, setMonth, user, setUser}){
         <div class="grid-container">
 
             <div className="Month-Name">
-                <button onClick={handelPrevMonth}>  Prev </button>
-                <a>{months[month]}</a>
-                <button onClick={handleNextMonth}> Next </button>
+                <button className="cal-buttons" onClick={handelPrevMonth}>  Prev </button>
+                
+                    <a>{months[month]}</a>
+                
+                <button className="cal-buttons" onClick={handleNextMonth}> Next </button>
             </div>
 
             <div className="Calendar">
@@ -121,7 +123,9 @@ function Calendar({ month, setMonth, user, setUser}){
             setStickerMode={setStickerMode}
             setStickerSelected={setStickerSelected}
             />
+            
             </div>
+            <div><br/></div>
         </div>
         
     )

@@ -43,7 +43,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
     //This is a helper function for daysMapped rendering, This deals with making each sticker show. 
     function postStickers(stickers){
         const stickersMapped = stickers.map((sticker) => {
-            return <img src={sticker.image} alt={sticker.name} width="20" height="20" key={randoNumber()}/>
+            return <img src={sticker.image} alt={sticker.name} width="30" height="30" key={randoNumber()}/>
         })
         return <div>{stickersMapped}</div>
     }
@@ -58,7 +58,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                 return (
                     <Link to={`days/${day.id}`} key={day.id}>
                     <div className="calendarDay" >
-                        {day.date.slice(0,5)}<br/>
+                        <a>{day.date.slice(0,5)}</a><br/>
                         <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
                         {postStickers(day.stickers)}
                     </div>
@@ -68,7 +68,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                 return (
                     <Link to={`days/${day.id}`} key={day.id}>
                     <div className="calendarDay" >
-                        {day.date.slice(0,5)}<br/>
+                        <a>{day.date.slice(0,5)}</a><br/>
                         <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
                     </div>
                     </Link>

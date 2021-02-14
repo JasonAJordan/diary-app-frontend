@@ -58,7 +58,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                 return (
                     <Link to={`days/${day.id}`} key={day.id}>
                     <div className="calendarDay" >
-                        <a>{day.date.slice(0,5)}</a><br/>
+                        {day.date.slice(0,5)}<br/>
                         <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
                         {postStickers(day.stickers)}
                     </div>
@@ -68,7 +68,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                 return (
                     <Link to={`days/${day.id}`} key={day.id}>
                     <div className="calendarDay" >
-                        <a>{day.date.slice(0,5)}</a><br/>
+                        {day.date.slice(0,5)}<br/>
                         <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
                     </div>
                     </Link>

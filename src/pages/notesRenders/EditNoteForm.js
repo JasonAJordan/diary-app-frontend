@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function EditNoteForm({handleEditNote, note, setEditMode}){
+function EditNoteForm({handleEditNote, note, setEditModeNote}){
 
     const [formData, setFormData] = useState({
 
@@ -30,7 +30,7 @@ function EditNoteForm({handleEditNote, note, setEditMode}){
         .then(r => r.json())
         .then(updatedNote => handleEditNote(updatedNote))
 
-        setEditMode(false);
+        setEditModeNote(false);
     }
 
     return (

@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 
 import ResultCard from "./SearchRenders/ResultCard"
 
-function Notes ({user, navBarSearch, setNavBarSearch, setRedirect}){
+function Notes ({user }){
+    // setNavBarSearch, navBarSearch 
 
-    setRedirect(false)
+    //setRedirect(false)
     
-    const [searchTerm, setSearchTerm] = useState(navBarSearch)
+    const [searchTerm, setSearchTerm] = useState("")
+
+
 
     const filterPosts = user.posts.filter( post => {
         const cond1 = post.context.toLowerCase().includes(searchTerm.toLowerCase())
@@ -16,10 +19,15 @@ function Notes ({user, navBarSearch, setNavBarSearch, setRedirect}){
         return (cond1 || cond2)
     })
 
+    const filterNotes = user.notes.filter( note => {
+        const cond1 = note.context.toLowerCase().includes(searchTerm.toLowerCase())
+        const cond2 = note.title.toLowerCase().includes(searchTerm.toLowerCase())
+        return (cond1 || cond2)
+    } )
+
 
     const filterPostMapped = filterPosts.map((post) => {
         //console.log(post)
-        
         return (
                 <ResultCard post={post} searchTerm={searchTerm} key={post.id}/>
             )

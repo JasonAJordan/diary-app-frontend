@@ -5,6 +5,13 @@ import NewNoteForm from "./notesRenders/NewNoteForm"
 function Notes ({user, setUser}){
 
     const [notes, setNotes] = useState(user.notes)
+    //const [isLoaded, setIsLoaded] = useState(false);
+
+    // useEffect(() => {
+    //     setNotes(user.notes)
+    //     setIsLoaded(!isLoaded)  
+    // },[])
+
 
     const notesMapped = notes.map((note) =>{
         return <NoteCard key={note.id} note={note} onDeleteNote={onDeleteNote} handleEditNote={handleEditNote}/>
@@ -46,10 +53,13 @@ function Notes ({user, setUser}){
 
     }
 
+    // if (!isLoaded) {
+    //     return <div>Loading...</div>
+    // }
     return (
         <div>
-            {notesMapped}
-
+            //{notesMapped}
+                asdfasdfasdfasdf
             <NewNoteForm user={user} handleNewNote={handleNewNote}  />
         </div>
     )

@@ -99,7 +99,7 @@ function Calendar({ month, setMonth, user, setUser}){
 
     return(
         
-        <div class="grid-container">
+        <div className="grid-container">
 
             <div className="Month-Name">
                 <button className="cal-buttons" onClick={handelPrevMonth}>  Prev </button>

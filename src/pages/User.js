@@ -10,7 +10,7 @@ function User({user, setUser}){
     const [editmode, setEditmode] = useState(false)
     const [stickers, setStickers] = useState(user.stickers)
 
-    console.log(stickers, "stickers list")
+    //console.log(stickers, "stickers list")
 
     const mappedUserStickers = stickers.map((sticker) => {
             return <StickerCard sticker={sticker} onDeleteSticker={handleStickerDelete} key={sticker.id}/>

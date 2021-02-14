@@ -23,8 +23,8 @@ function App() {
   const [user, setUser] = useState(null)
   const [month, setMonth] = useState(0)
   const [loaded, setLoaded] = useState(false)
-  const [navBarSearch, setNavBarSearch] = useState("")
-  const [redirect, setRedirect] = useState(false)
+  //const [redirect, setRedirect] = useState(false)
+  // const [searchTerm, setSearchTerm] = useState("")
 
 
 
@@ -34,6 +34,7 @@ function App() {
     .then(data => {
       setUser(data)
       setLoaded(true)
+      //setNavBarSearch("")
     })
   }, [])
 
@@ -44,9 +45,12 @@ function App() {
   } else {
     return (
       <div className="background">
-      <NavBar user={user} setUser={setUser} navBarSearch={navBarSearch} setNavBarSearch={setNavBarSearch}
-      redirect={redirect} setRedirect={setRedirect}
+      <NavBar user={user} setUser={setUser} 
+      // redirect={redirect} setRedirect={setRedirect} 
+      // setSearchTerm={setSearchTerm}
+      //navBarSearch={navBarSearch} setNavBarSearch={setNavBarSearch}
       />
+
       
 
       <Switch>
@@ -76,10 +80,10 @@ function App() {
         </Route>
 
         <Route exact path="/search">
-          <Search user={user} navBarSearch={navBarSearch} 
-          setRedirect={setRedirect}
+          <Search user={user}
           />
         </Route>
+
 
         <Route path="/">
             <Home  user={user} />

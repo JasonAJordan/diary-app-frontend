@@ -4,50 +4,53 @@ import React, {useState} from "react";
 
 import '../css/NavBar.css';
 
-function NavBar({user, setUser, navBarSearch, setNavBarSearch, redirect, setRedirect}){
+function NavBar({user, setUser }){
+    //navBarSearch, setNavBarSearch, redirect, setRedirect 
+    //  const [ navSearch, setNavSearch] = useState("")
     //console.log(navBarSearch)
-    //const [redirect, setRedirect] = useState(false)
+    // const [redirect, setRedirect ] =useState(false)
+    //const [redirectToSearch, setRedirectToSearch] = useState(false)
     // const []
 
     function handleLogOut(){
         setUser(null)
     }
 
-    function handleSearch(e){
-        e.preventDefault()
-        console.log(navBarSearch)
-        setRedirect(!redirect)
-        // return <Redirect to="/search" />
-        //setRedirect(!redirect)
-        //redirectToSearch()
-        //setNavBarSearch("")
-    }
+    // function handleSearch(e){
+    //     e.preventDefault()
+    //     //console.log(navBarSearch)
+    //     //setRedirectToSearch(!redirectToSearch)
+    //     setSearchTerm(navSearch)
+    //     setRedirect(!redirect)
+    //     //redirectToSearch()
+    //     //setNavBarSearch("")
+    // }
 
-    function redirectToSearch(){
-        return (<Redirect to="/search" /> )
-    }
+    // function redirectToSearch(){
+    //     return (<Redirect to="/search" /> )
+    // }
     // {redirect ? <Redirect to="/search" /> : null}
 
     if (user){
         return (
-            <div className="navBar">
+            <div className="navBar" >
              
-            <Link to={`/`}><a className="Nav-Bar-Options">Home</a></Link>
-            <Link to={`/calendar`}><a className="Nav-Bar-Options">My Calendar</a></Link>
-            <Link to={`/notes`}><a className="Nav-Bar-Options">My Notes</a></Link>
-            <Link to={`/users/${user.id}`}><a className="Nav-Bar-Options">My Page</a></Link>
-            <Link to={`/search`}><a className="Nav-Bar-Options">Search</a></Link>
+            <Link to={`/`}><span className="Nav-Bar-Options">Home</span></Link>
+            <Link to={`/calendar`}><span className="Nav-Bar-Options">My Calendar</span></Link>
+            <Link to={`/notes`}><span className="Nav-Bar-Options">My Notes</span></Link>
+            <Link to={`/users/${user.id}`}><span className="Nav-Bar-Options">My Page</span></Link>
+            <Link to={`/search`}><span className="Nav-Bar-Options">Search</span></Link>
 
-            <form  onSubmit={handleSearch}>
+            {/* <form  onSubmit={handleSearch}>
                 <input 
-                        value={navBarSearch}
-                        onChange={(e) => setNavBarSearch(e.target.value)} 
+                        value={navSearch}
+                        onChange={(e) => setNavSearch(e.target.value)} 
                         type="text"
-                        placeholder={"Search"}
+                        placeholder={"Search Your Entries"}
                 />
-            </form>
+            </form> */}
 
-            {redirect ? <Redirect to="/search" /> : null}
+            {/* {redirectToSearch ? <Redirect to="/search" /> : null} */}
 
 
             <div className="button-div"><Link to={`/`}><button onClick={handleLogOut}>Log out</button></Link></div>

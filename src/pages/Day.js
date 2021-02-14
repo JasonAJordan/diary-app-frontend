@@ -283,8 +283,8 @@ function Day({user, setUser}){
             <div className="grid-container-day">
 
 
-            <div class="Info">
-                <div class="Date">
+            <div className="Info">
+                <div className="Date">
                     <Link to={`/days/${prevDay.id}`}><button >Prev</button></Link>
                     <a>{day.date}</a>
                     <Link to={`/days/${nextDay.id}`}><button >Next</button></Link>
@@ -294,18 +294,18 @@ function Day({user, setUser}){
                 <a>Stickers:</a><div className="sticker-wrap"> {mappedStickers} </div>
             </div>
             
-            <div class="Entries">
+            <div className="Entries">
                 <div> 
                     <h2>Posts:</h2>
                     {mappedPosts}
                 </div>
             </div>
 
-            <div class="New-Entries">
+            <div className="New-Entries">
             <NewPostForm day={day} handleNewPost={handleNewPost}/>
             </div>
 
-            <div class="StickersAdd">
+            <div className="StickersAdd">
                 <NewDayStickerForm day={day} handleNewDaySticker={handleNewDaySticker} userStickers={user.stickers}/>
             </div>
             

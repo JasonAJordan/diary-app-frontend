@@ -37,7 +37,7 @@ function NavBar({user, setUser }){
              
             <Link to={`/`}><span className="Nav-Bar-Options">Home</span></Link>
             <Link to={`/calendar`}><span className="Nav-Bar-Options">My Calendar</span></Link>
-            <Link to={`/notes`}><span className="Nav-Bar-Options">My Notes</span></Link>
+            <Link to={`/notes`}><span className="Nav-Bar-Options">My Scribbles</span></Link>
             <Link to={`/users/${user.id}`}><span className="Nav-Bar-Options">My Page</span></Link>
             <Link to={`/search`}><span className="Nav-Bar-Options">Search</span></Link>
 

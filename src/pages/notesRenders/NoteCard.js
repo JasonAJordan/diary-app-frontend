@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EditNoteForm from "./EditNoteForm";
+import { Link } from "react-router-dom";
 
 function NoteCard ({note, onDeleteNote, handleEditNote}){
 
@@ -20,7 +21,7 @@ function NoteCard ({note, onDeleteNote, handleEditNote}){
   
     return (
         <div style={{color: note.text_color}}>
-            <h4>{note.title}</h4>
+            <Link to={`/notes/${note.id}`}> <h4>{note.title}</h4> </Link>
             <p>{note.context}</p>
 
             {(editmodeNote === true)

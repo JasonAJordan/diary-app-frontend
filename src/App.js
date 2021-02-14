@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp"
 import Home from "./pages/Home"
 import LoginPage from "./pages/LoginPage"
 import Notes from "./pages/Notes"
+import NoteShow from "./pages/NoteShow"
 import Search from "./pages/Search"
 
 import NavBar from "./navBar/NavBar"
@@ -73,6 +74,10 @@ function App() {
 
         <Route exact path="/login">
           <LoginPage setUser={setUser} user={User}/>
+        </Route>
+
+        <Route exact path="/notes/:id">
+          <NoteShow user={user} setUser={setUser} />
         </Route>
 
         <Route exact path="/notes">

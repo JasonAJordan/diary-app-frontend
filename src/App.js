@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp"
 import Home from "./pages/Home"
 import LoginPage from "./pages/LoginPage"
 import Notes from "./pages/Notes"
+import Search from "./pages/Search"
 
 import NavBar from "./navBar/NavBar"
 
@@ -22,6 +23,8 @@ function App() {
   const [user, setUser] = useState(null)
   const [month, setMonth] = useState(0)
   const [loaded, setLoaded] = useState(false)
+  const [navBarSearch, setNavBarSearch] = useState("")
+  const [redirect, setRedirect] = useState(false)
 
 
 
@@ -41,7 +44,9 @@ function App() {
   } else {
     return (
       <div className="background">
-      <NavBar user={user} setUser={setUser}/>
+      <NavBar user={user} setUser={setUser} navBarSearch={navBarSearch} setNavBarSearch={setNavBarSearch}
+      redirect={redirect} setRedirect={setRedirect}
+      />
       
 
       <Switch>
@@ -68,6 +73,12 @@ function App() {
 
         <Route exact path="/notes">
           <Notes user={user} setUser={setUser}/>
+        </Route>
+
+        <Route exact path="/search">
+          <Search user={user} navBarSearch={navBarSearch} 
+          setRedirect={setRedirect}
+          />
         </Route>
 
         <Route path="/">

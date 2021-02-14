@@ -7,7 +7,7 @@ function Notes ({user, setUser}){
     const [notes, setNotes] = useState(user.notes)
 
     const notesMapped = notes.map((note) =>{
-        return <NoteCard key={note.id} note={note} onDeleteNote={onDeleteNote}/>
+        return <NoteCard key={note.id} note={note} onDeleteNote={onDeleteNote} handleEditNote={handleEditNote}/>
     })
 
     function handleNewNote(newNote){
@@ -30,18 +30,31 @@ function Notes ({user, setUser}){
         setUser(updatedUser)
     }
 
+    function handleEditNote(updatedNote){
+        const updatedNotes = notes.map((note) => {
+            if (note.id === updatedNote.id){
+                return updatedNote
+            } else {
+                return note
+            }
+        })
+        setNotes(updatedNotes)
+
+        let updatedUser = user 
+        updatedUser.notes = notes
+        setUser(updatedUser)
+
+    }
+
     return (
         <div>
             {notesMapped}
 
-            <NewNoteForm user={user} handleNewNote={handleNewNote} />
+            <NewNoteForm user={user} handleNewNote={handleNewNote}  />
         </div>
     )
 
 
 }
-
-
-
 
 export default Notes

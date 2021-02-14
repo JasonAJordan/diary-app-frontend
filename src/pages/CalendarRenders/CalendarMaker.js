@@ -42,7 +42,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
 
     //This is a helper function for daysMapped rendering, This deals with making each sticker show. 
     function postStickers(stickers){
-        const stickersMapped = stickers.map((sticker) => {
+        const stickersMapped = stickers.slice(0, 3).map((sticker) => {
             return <img src={sticker.image} alt={sticker.name} width="30" height="30" key={randoNumber()}/>
         })
         return <div>{stickersMapped}</div>

@@ -2,22 +2,6 @@ import { useState }  from "react";
 import { Link } from "react-router-dom";
 
 function SignUp ({setUser}){
-
-    //let date = new Date(Date.parse('2020/01/01'))
-    // let date = new Date("2020-01-02")
-
-    // console.log(date)
-    // date.setDate(date.getDate + 1)
-    // console.log(date)
-    // // console.log(date)
-
-    // let today = new Date(Date.parse('2021/01/01'));
-    // let dd = String(today.getDate()).padStart(2, '0');
-    // let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    // let yyyy = today.getFullYear();
-    // let formated = mm + '/' + dd + '/' + yyyy;
-    //console.log(formated)
-
     
     function sleep(milliseconds) {
         const date = Date.now();
@@ -34,7 +18,11 @@ function SignUp ({setUser}){
         bio: "",
     })
 
+    const [passwordCheck, setpasswordCheck] = useState("")
+
     const [accountMade, setAccoutMade] = useState(false)
+
+    const [showPassword, setShowPassWord] = useState("password")
 
     function handleFormChange(event){
         // console.log()
@@ -85,8 +73,7 @@ function SignUp ({setUser}){
                 body: JSON.stringify(data),
                 })
             .then(r => r.json())
-            //.then(newDays => sleep(10))
-            //sleep(1000)
+
         }
 
         autoSticker(newUser)
@@ -100,17 +87,7 @@ function SignUp ({setUser}){
             name: "Hyped",
             user_id: newUser.id,
         }
-        // const form = new FormData()
-        // form.append("user_id", dataSticker.user_id)
-        // form.append("image", dataSticker.image)
-        // form.append("name", dataSticker.name)
-        // console.log(form)
 
-        // fetch(`http://localhost:3000/stickers`,{
-        //     method: 'POST',
-        //     body: form,
-        //     })
-        // .then(r => r.json())
         fetch(`http://localhost:3000/stickers`,{
             method: 'POST',
             headers: {
@@ -125,16 +102,13 @@ function SignUp ({setUser}){
         //setAutoLoginNewUser(newUser)
     }
 
-    
-    // function setAutoLoginNewUser(newUser){
-    //     fetch(`http://localhost:3000/users/${newUser.id}`)
-    //         .then(resp => resp.json())
-    //         .then(data => {
-    //             setUser(data)
-    //     })
-    //     console.log("Im not sure")
-    // }
-  
+    function handleShowPassword(){
+        if (showPassword === "password"){
+            setShowPassWord("text")
+        } else {
+            setShowPassWord("password")
+        } 
+    }
 
     if(accountMade){
         return (
@@ -155,10 +129,12 @@ function SignUp ({setUser}){
                 onChange={handleFormChange}
                 />
                 <label>Password</label>
-                <input type="text" name="password" placeholder="Password"
+                <input type={showPassword} name="password" placeholder="Password"
                 value={formData.password}
                 onChange={handleFormChange}
                 />
+                <input type="checkbox" onClick={handleShowPassword}/> <label>Show Password</label>
+
                 <label>Your Name</label>
                 <input type="text" name="name" placeholder="Name"
                 value={formData.name}

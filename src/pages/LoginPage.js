@@ -9,6 +9,7 @@ function LoginPage ({user, setUser}){
         username: "",
         password: "",
     })
+    const [showPassword, setShowPassWord] = useState("password")
 
     function handleFormChange(event){
         // console.log()
@@ -63,6 +64,14 @@ function LoginPage ({user, setUser}){
 
     }
 
+    function handleShowPassword(){
+        if (showPassword === "password"){
+            setShowPassWord("text")
+        } else {
+            setShowPassWord("password")
+        } 
+    }
+    
 
     if (!users) {
         return <h1> Loading fake Auth</h1>
@@ -77,8 +86,9 @@ function LoginPage ({user, setUser}){
                      onChange={handleFormChange}/>  
                     <br/>
                     <label >Password</label>
-                    <input type="text" placeholder="Enter Password" name="password" value={formData.password}
-                     onChange={handleFormChange}/>  
+                    <input type={showPassword} placeholder="Enter Password" name="password" value={formData.password}
+                     onChange={handleFormChange} id="myPasswordInput"/>  
+                     <input type="checkbox" onClick={handleShowPassword}/> <label>Show Password</label>
                     <br/>
                     <button type="submit">Login</button>
                 </form>

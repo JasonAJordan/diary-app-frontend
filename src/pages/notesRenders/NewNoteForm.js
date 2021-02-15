@@ -62,7 +62,7 @@ function NewNoteForm ({user, handleNewNote}){
 
     function handleSubmit2(event){
         event.preventDefault()
-        console.log(formDataNoImg)
+        //console.log(formDataNoImg)
 
         fetch(`http://localhost:3000/notes`,{
             method: 'POST',
@@ -118,7 +118,7 @@ function NewNoteForm ({user, handleNewNote}){
                 <button type="submit">Add the Scribble! </button>
             </form>
             }
-            <button onClick={handleToggleUpload}>Upload a Picture,optional</button>
+            <button onClick={handleToggleUpload}>Upload a Picture (optional)</button>
         </div>
     )
 }

@@ -8,7 +8,6 @@ function Notes ({user, setUser}){
     const [notes, setNotes] = useState(user.notes)
     const [index, setIndex] = useState(0)
     const [showAmount, setShowAmount] =useState(5)
-    
 
     const notesMapped = notes.slice(index, index + showAmount).map((note) =>{
         return <NoteCard key={note.id} note={note} onDeleteNote={onDeleteNote} handleEditNote={handleEditNote}/>

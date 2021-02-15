@@ -61,10 +61,6 @@ function Day({user, setUser}){
     //console.log(prevDay.id, "tuw")
     
     
-    
-
-
-
     //The days update helper functions (there should be 4!)
 
     function updateDaysForNewPost(dayId, daysArray, updatedPost){

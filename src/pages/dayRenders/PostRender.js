@@ -25,6 +25,8 @@ function PostRender({post, onDeletePost, handleEditPost, day}){
 
             <p style={{color: post.text_color}}>{post.context}</p>
 
+            {post.image ? <img src={post.image} width="100" height="100"/> : null}
+
             {(editmode === true)
             ? <EditPostForm post={post} handleEditPost={handleEditPost} day={day} setEditmode={setEditmode}/>
             :<button onClick={handleEditClick}>Make a Change</button>

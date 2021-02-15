@@ -17,6 +17,7 @@ function StickerCard({sticker, onDeleteSticker}){
             <a>{sticker.name}</a>
             <button onClick={onDeleteClick}>x</button>
             <br/>
+            
             <img src={sticker.image} width="80" height="80"/>
             
         </div>

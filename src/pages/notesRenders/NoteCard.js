@@ -23,6 +23,9 @@ function NoteCard ({note, onDeleteNote, handleEditNote}){
         <div style={{color: note.text_color}}>
             <Link to={`/notes/${note.id}`}> <h4>{note.title}</h4> </Link>
             <p>{note.context}</p>
+            {note.image ? <img src={note.image} width="100" height="100"/> : null}
+            
+            <br/>
 
             {(editmodeNote === true)
             ? <EditNoteForm note={note} handleEditNote={handleEditNote} setEditModeNote={setEditModeNote}/>

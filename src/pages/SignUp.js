@@ -1,15 +1,15 @@
 import { useState }  from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function SignUp ({setUser}){
     
-    function sleep(milliseconds) {
-        const date = Date.now();
-        let currentDate = null;
-        do {
-          currentDate = Date.now();
-        } while (currentDate - date < milliseconds);
-      }
+    // function sleep(milliseconds) {
+    //     const date = Date.now();
+    //     let currentDate = null;
+    //     do {
+    //       currentDate = Date.now();
+    //     } while (currentDate - date < milliseconds);
+    //   }
 
     const [formData, setFormData] = useState({
         username: "",
@@ -18,11 +18,12 @@ function SignUp ({setUser}){
         bio: "",
     })
 
+
     const [passwordCheck, setpasswordCheck] = useState("")
 
     const [accountMade, setAccoutMade] = useState(false)
-
     const [showPassword, setShowPassWord] = useState("password")
+    const history = useHistory();
 
     function handleFormChange(event){
         // console.log()
@@ -98,8 +99,34 @@ function SignUp ({setUser}){
         .then(r => r.json())
 
         console.log("New user done!")
-        setAccoutMade(true)
+        //setAccoutMade(true)
         //setAutoLoginNewUser(newUser)
+        handleLogin();
+    }
+
+    function handleLogin() {
+        //e.preventDefault();
+        const username = formData.username
+        const password = formData.password
+        //console.log("adssadf")
+
+        fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        })
+          .then((r) => r.json())
+          .then((data) => {
+            // data is an object with a user and token: { user, token }
+            // setCurrentUser is a callback function from the App component
+            setUser(data.user);
+            // use localStorage to save the token
+            localStorage.setItem("token", data.token)
+            //redirect 
+            history.push("/");
+        });
     }
 
     function handleShowPassword(){

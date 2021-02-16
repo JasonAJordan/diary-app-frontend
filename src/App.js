@@ -27,22 +27,72 @@ function App() {
   //const [redirect, setRedirect] = useState(false)
   // const [searchTerm, setSearchTerm] = useState("")
 
+  // useEffect(() => { 
+  //   fetch(`http://localhost:3000/autologin`)
+  //   .then(resp => resp.json())
+  //   .then(data => {
+  //     setUser(data)
+  //     setLoaded(true)
+  //     //setNavBarSearch("")
+  //   })
+  // }, [])
 
-
-  useEffect(() => { 
-    fetch(`http://localhost:3000/users/1`)
-    .then(resp => resp.json())
-    .then(data => {
-      setUser(data)
-      setLoaded(true)
-      //setNavBarSearch("")
-    })
-  }, [])
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetch("http://localhost:3000/profile", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((r) => r.json())
+        .then((user) => {setUser(user)
+          setLoaded(true)
+          console.log(user)}
+          );
+    }
+    
+  }, []);
 
   
 
-  if (loaded === false) {
-    return <h2> LOADING </h2>
+  if (user === null) {
+    return (
+      <div className="background">
+        {/* <NavBar user={user} setUser={setUser} />
+    
+        <Switch>
+        <Route exact path="/login">
+          <LoginPage setUser={setUser} user={User}/>
+        </Route>
+
+        <Route path="/">
+            <Home  user={user} />
+        </Route>
+        </Switch> */}
+      <NavBar user={user} setUser={setUser} />
+
+      <Switch>
+        <Route exact path="/login">
+          <LoginPage setUser={setUser} user={User}/>
+        </Route>
+
+        <Route exact path="/signup">
+            <SignUp setUser={setUser}/>
+        </Route>
+
+        <Route path="/">
+            <Home  user={user} />
+        </Route>
+
+
+
+      </Switch>
+
+      </div>
+    )
+      
   } else {
     return (
       <div className="background">
@@ -64,17 +114,15 @@ function App() {
             <User user={user} setUser={setUser}/>
         </Route>
 
-        <Route exact path="/signup">
-            <SignUp setUser={setUser}/>
-        </Route>
+
 
         <Route exact path="/calendar">
             <Calendar  month={month} setMonth={setMonth} user={user} setUser={setUser}/>
         </Route>
 
-        <Route exact path="/login">
+        {/* <Route exact path="/login">
           <LoginPage setUser={setUser} user={User}/>
-        </Route>
+        </Route> */}
 
         <Route exact path="/notes/:id">
           <NoteShow user={user} setUser={setUser} />
@@ -88,7 +136,6 @@ function App() {
           <Search user={user}
           />
         </Route>
-
 
         <Route path="/">
             <Home  user={user} />

@@ -12,7 +12,10 @@ function NavBar({user, setUser }){
     //const [redirectToSearch, setRedirectToSearch] = useState(false)
     // const []
 
+    //const [name, setName] = useState(user.name)
+
     function handleLogOut(){
+        localStorage.removeItem("token")
         setUser(null)
     }
 

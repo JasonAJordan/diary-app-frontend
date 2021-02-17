@@ -20,9 +20,9 @@ function NoteCard ({note, onDeleteNote, handleEditNote}){
     
   
     return (
-        <div style={{color: note.text_color}}>
-            <Link to={`/notes/${note.id}`}> <h4>{note.title}</h4> </Link>
-            <p>{note.context}</p>
+        <div className="Note-Card" >
+            <Link to={`/notes/${note.id}`} style={{ textDecoration: 'none', color: 'black'}}> <label className="note-title" >{note.title}</label> </Link>
+            <p style={{color: note.text_color}}>{note.context}</p>
             {note.image ? <img src={note.image} width="100" height="100"/> : null}
             
             <br/>

@@ -81,41 +81,54 @@ function NewNoteForm ({user, handleNewNote}){
     }
     
     return (
-        <div >
+        <div className="new-Note">
             <h2>Write a new Scribble</h2>
             {(addFileCheck === false) ? 
             <form onSubmit={handleSubmit2}>
-                <input type="text" name="title" placeholder="Title"
+                <label>Title: </label>
+                <input className="New-Note-textarea-1" type="text" name="title" placeholder="Title"
                 value={formDataNoImg.name}
                 onChange={handleFormChange2}
                 />
-                <input type="textarea" name="context" placeholder="Your Entry"
+                <br/>
+                <label>Note: </label>
+                <textarea className="New-Note-textarea-2" type="textarea" name="context" placeholder="Your Entry"
                 value={formDataNoImg.context}
                 onChange={handleFormChange2}
                 />
+                <br/>
+                <label>Color: </label>
                 <input type="color" name="text_color" 
                 value={formDataNoImg.color}
                 onChange={handleFormChange2}
                 />
-                <button type="submit">Add the Scribble! </button>
+                <br/>
+                <button className="submit-button" type="submit">Add the Scribble! </button>
             </form>
             :
             
             <form onSubmit={handleSubmit}>
-                <input type="text" name="title" placeholder="Title"
+                <label>Title: </label>
+                <input className="New-Note-textarea-1" type="text" name="title" placeholder="Title"
                 value={formData.name}
                 onChange={handleFormChange}
                 />
-                <input type="textarea" name="context" placeholder="Your Entry"
+                <br/>
+                <label>Note: </label>
+                <textarea className="New-Note-textarea-2" type="textarea" name="context" placeholder="Your Entry"
                 value={formData.context}
                 onChange={handleFormChange}
                 />
+                <br/>
+                <label>Color: </label>
                 <input type="color" name="text_color" 
                 value={formData.color}
                 onChange={handleFormChange}
                 />
+                <br/>
                 <input type="file" name="image" onChange={handleFormChangeForUpload}/>
-                <button type="submit">Add the Scribble! </button>
+                <br/>
+                <button className="submit-button" type="submit">Add the Scribble! </button>
             </form>
             }
             <button onClick={handleToggleUpload}>Upload a Picture (optional)</button>

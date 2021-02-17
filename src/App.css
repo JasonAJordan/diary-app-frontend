@@ -153,8 +153,9 @@
   max-width: 840px;
   width: 840;
   padding: 20px solid rgb(0, 255, 255,);
-  border: 5px solid rgb(17, 255, 176);
+  border: 5px solid rgba(49, 255, 186, 0.493);
   background-color: rgba(173, 255, 228, 0.4);
+  border-radius: 8px;
 }
 
 

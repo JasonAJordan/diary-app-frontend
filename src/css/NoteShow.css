@@ -1,0 +1,38 @@
+.grid-container-noteshow {
+    display: grid;
+    grid-template-columns: 0.3fr 2.4fr 0.3fr;
+    grid-template-rows: 0.2fr 2.5fr 0.3fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Header Header Header"
+      ". Main ."
+      ". . .";
+}
+
+.Header { grid-area: Header; }
+
+.Main { grid-area: Main; 
+    max-width: 720px;
+    width: 720px;
+    border-radius: 6px;
+    border: 1px solid black;
+    margin-top: 5px;
+    padding: 6px;
+    background-color: rgba(255, 255, 255, 0.438);
+}
+
+.Main button {
+
+    background-color: rgb(20, 197, 220);
+    border: none;
+    color: white; 
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+    margin: 4px;
+    
+    
+}
+

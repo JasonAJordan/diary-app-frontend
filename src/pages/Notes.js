@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NoteCard from "./notesRenders/NoteCard";
 import NewNoteForm from "./notesRenders/NewNoteForm"
+import '../css/Notes.css';
 
 
 function Notes ({user, setUser}){
@@ -66,16 +67,19 @@ function Notes ({user, setUser}){
 
 
     return (
-        <div>
-            <br/><br/>
-            <div>Scribbles!</div>
+        <div className="grid-container-notes">
+            <div className="Search">
+                <h2>Your Scribbles!</h2>
 
-            <NewNoteForm user={user} handleNewNote={handleNewNote}  />
-            <div>
-                <p>Page: {(Math.floor(index/ showAmount) ) + 1}</p>
+                <NewNoteForm user={user} handleNewNote={handleNewNote}  />
+
+            <div className="page-settings">
+                
                 {(index === 0) ? null : <button onClick={handlePreviousPage}>Previous Page</button>}
+                <label>Page: {(Math.floor(index/ showAmount) ) + 1}           </label>
                 {(index + showAmount > notes.length) ? null : <button onClick={handleNextPage}>Next Page</button>}
 
+                <br/>
                 <label>Max Sribbles on One Page:</label>
                     <select name="index" value={showAmount} onChange={handleShowAmountChange} >
                         <option value="5">5</option>
@@ -86,11 +90,19 @@ function Notes ({user, setUser}){
                     </select>
                
             </div>
-            
+            <div className="Notes-List">
             {notesMapped}
+            </div>
+           
+            </div>
             
         </div>
     )
+
+//     <div class="grid-container">
+//   <div class="NavBar"></div>
+//   <div class="Search"></div>
+// </div>
 
 
 }

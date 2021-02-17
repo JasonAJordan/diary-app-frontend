@@ -18,9 +18,10 @@ function StickerApplyBox({user, stickerMode, setStickerMode, setStickerSelected}
     })
 
     return (
-        <div> This will be quick sticker function box! 
+        <div> 
+            {(stickerMode === true) ? <button onClick={handleToggleMode}>Stop Adding Stickers</button> :
+            <button onClick={handleToggleMode}>Add a Sticker</button> }
 
-            <button onClick={handleToggleMode}>Enable Adding a Sticker </button>
 
             {(stickerMode === true)
                 ?<form onChange={handleStickerChange}>

@@ -1,0 +1,33 @@
+.Login-Container{
+    margin: auto;
+    width: 38%;
+    max-width: 38%;
+    /* border: 2px solid black; */
+    padding: 4px;
+}
+
+.Login-Container label{
+    margin: 6px;
+}
+
+.Login-Container button{
+    
+    margin: 6px;
+    background-color: rgb(20, 197, 220);
+    border: none;
+    color: white; 
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+
+    position: relative;
+    bottom: 53px;
+    left: 400px;
+    
+}
+
+.Login-Container input {
+    margin: 4px;
+}

@@ -1,5 +1,6 @@
 import { useState }  from "react";
 import { Link, useHistory } from "react-router-dom";
+import '../css/SignUp.css';
 
 function SignUp ({setUser}){
     
@@ -147,28 +148,32 @@ function SignUp ({setUser}){
         )
     } else {
     return (
-        <div>
-            <h2>New User</h2>
+        <div className="SignUp-Container">
+            <br/><br/><br/><br/>
+            <h2>SignUp!</h2>
             <form onSubmit={handleSubmit}>
                 <label>UserName</label>
                 <input type="text" name="username" placeholder="Username"
                 value={formData.username}
                 onChange={handleFormChange}
                 />
+                <br/>
                 <label>Password</label>
                 <input type={showPassword} name="password" placeholder="Password"
                 value={formData.password}
                 onChange={handleFormChange}
                 />
-                <input type="checkbox" onClick={handleShowPassword}/> <label>Show Password</label>
-
+                
+                <input type="checkbox" onClick={handleShowPassword}/> <label>Show Password  </label>
+                <br/>
                 <label>Your Name</label>
                 <input type="text" name="name" placeholder="Name"
                 value={formData.name}
                 onChange={handleFormChange}
                 />
+                <br/>
                 <label>About Yourself</label>
-                <input type="textarea" name="bio" placeholder="About Yourself!"
+                <textarea className="New-User-textarea-2" type="textarea" name="bio" placeholder="About Yourself!"
                 value={formData.bio}
                 onChange={handleFormChange}
                 />

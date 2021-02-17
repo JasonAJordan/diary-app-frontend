@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import '../css/LoginPage.css';
 
 function LoginPage ({user, setUser}){
 
@@ -67,6 +68,9 @@ function LoginPage ({user, setUser}){
         })
           .then((r) => r.json())
           .then((data) => {
+              if (data.failure) {
+                  alert("Incorrect Username or Password")
+              } else {
             // data is an object with a user and token: { user, token }
             // setCurrentUser is a callback function from the App component
             setUser(data.user);
@@ -74,6 +78,7 @@ function LoginPage ({user, setUser}){
             localStorage.setItem("token", data.token)
             //redirect 
             history.push("/");
+            }
         });
     }
 
@@ -105,10 +110,11 @@ function LoginPage ({user, setUser}){
     // } else 
     // if (!isLogin){
         return (
-            <div>
-                <h1> Login to your JournalSoft</h1>
+            <div className="Login-Container">
+                <br/><br/><br/><br/>
+                <h1> Login to your JournalSoft Account</h1>
                 <form onSubmit={handleSubmit}>
-                    <h4>Login</h4>
+
                     <label >Username</label>
                     <input type="text" placeholder="Enter Username" name="username" value={username}
                      onChange={(e) => setUsername(e.target.value)}/>  

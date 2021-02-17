@@ -1,0 +1,9 @@
+.titleCard {
+    text-align: center;
+    position: relative;
+    top: 50px;
+}
+
+.titleCard h1 {
+    font-size: 44px;
+}

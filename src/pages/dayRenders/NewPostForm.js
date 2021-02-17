@@ -88,40 +88,55 @@ function NewPostForm({handleNewPost, day}){
             <h2>Write a new Entry</h2>
             {(addFileCheck === false) ? 
             <form onSubmit={handleSubmit}>
-                <input type="text" name="title" placeholder="Title"
+                <label>Title: </label>
+                <input  className="New-Entries-textarea-1" type="text" name="title" placeholder="Title"
                 value={formDataNoImg.title}
                 onChange={handleFormChange}
                 />
-                <input type="textarea" name="context" placeholder="Your Entry"
+                <br/>
+                <label>Entry: </label>
+                <textarea className="New-Entries-textarea-2" type="textarea" name="context" placeholder="Your Entry"
                 value={formDataNoImg.context}
                 onChange={handleFormChange}
                 />
+                <br/>
+                <label>Color: </label>
                 <input type="color" name="text_color" 
                 value={formDataNoImg.color}
                 onChange={handleFormChange}
                 />
+                <br/>
                 <button type="submit">Add the Entry! </button>
             </form>
             : 
             <form onSubmit={handleSubmitImage}>
-            <input type="text" name="title" placeholder="Title"
+            <label>Title: </label>
+            <input className="New-Entries-textarea-1" type="text" name="title" placeholder="Title"
             value={formData.title}
             onChange={handleFormChangeImg}
             />
-            <input type="textarea" name="context" placeholder="Your Entry"
+            <br/>
+            <label>Entry: </label>
+            <textarea className="New-Entries-textarea-2" type="textarea" name="context" placeholder="Your Entry"
             value={formData.context}
             onChange={handleFormChangeImg}
             />
+            <br/>
+            <label>Color: </label>
             <input type="color" name="text_color" 
             value={formData.color}
             onChange={handleFormChangeImg}
             />
-            <input type="file" name="image" onChange={handleFormChangeForUpload}/>
+            <br/>
+            <input className="ImageUpload" type="file" name="image" onChange={handleFormChangeForUpload}/>
+            <br/>
             <button type="submit">Add the Entry! </button>
         </form> 
     }
 
-            <button onClick={handleToggleUpload}>Upload a Picture (optional)</button>
+           
+            {addFileCheck ? <button onClick={handleToggleUpload}>No Picture</button> : 
+            <button onClick={handleToggleUpload}>Upload a Picture (optional)</button> }
         </div>
         
     )

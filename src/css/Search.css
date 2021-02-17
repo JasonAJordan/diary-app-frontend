@@ -1,0 +1,26 @@
+.Search-Container{
+    margin: auto;
+    max-width: 80%;
+    width: 80%;
+    float: center;
+    /* border: 1px solid black; */
+}
+
+
+.blob-Card {
+    margin: 5px;
+    border-bottom: 4px dotted rgba(229, 101, 255, 0.712);
+    padding: 4px;
+    color: black;
+    text-decoration: none;
+}
+
+.results{
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.671);
+}
+
+.Options{
+
+    margin: 6px;
+}

@@ -37,19 +37,26 @@ function EditNoteForm({handleEditNote, note, setEditModeNote}){
         <div>
             <h2>Edit Scribble</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="title" placeholder={note.title}
+                <label>Title: </label>
+                <input className="New-Note-textarea-1" type="text" name="title" placeholder={note.title}
                 value={formData.title}
                 onChange={handleFormChange}
                 />
-                <input type="textarea" name="context" placeholder={note.context}
+                <br/>
+                <label>Note: </label>
+                <textarea className="New-Note-textarea-2"type="textarea" name="context" placeholder={note.context}
                 value={formData.context}
                 onChange={handleFormChange}
                 />
+                <br/>
+                <label>Color: </label>
                 <input type="color" name="text_color" 
                 value={formData.text_color}
                 onChange={handleFormChange}
                 />
-                <button type="submit">Save the Scribble! </button>
+                <br/>
+                <button className="submit-button" type="submit">Save the Scribble! </button>
+                
             </form>
         </div>
         

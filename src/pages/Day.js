@@ -287,13 +287,15 @@ function Day({user, setUser}){
                 </div>
 
                 
-                <a>Stickers:</a><div className="sticker-wrap"> {mappedStickers} </div>
+                <a>Stickers:</a><div className="sticker-day-wrap"> {mappedStickers} </div>
             </div>
             
             <div className="Entries">
                 <div> 
-                    <h2>Posts:</h2>
+                    <h2>Entries:</h2>
+                    <div className="entries-wrap">
                     {mappedPosts}
+                    </div>
                 </div>
             </div>
 

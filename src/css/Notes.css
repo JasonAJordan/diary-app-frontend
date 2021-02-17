@@ -1,0 +1,81 @@
+.grid-container-notes {
+    display: grid;
+    grid-template-columns: 0.4fr 2.7fr 0.4fr;
+    grid-template-rows: 0.2fr 2.5fr 0.3fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "NavBar NavBar NavBar"
+      ". Search ."
+      ". . .";
+  }
+.NavBar { grid-area: NavBar; }
+
+.Search { grid-area: Search; }
+
+.Notes-List{
+    margin: 5px;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.671);
+    border-radius: 30px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.new-Note {
+    background-color: rgb(127, 255, 212, .3);
+    padding: 12px;
+    border-radius: 30px;
+    /* max-width: 500px; */
+    width: 100%;
+    /* max-height: 600px; */
+    overflow-y: auto;
+}
+
+.New-Note-textarea-1{
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    width: 90%; 
+  }
+
+  .New-Note-textarea-2{
+    /* width: 500px; */
+    width: 90%;
+    height: 120px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+.page-settings {
+    text-align: center;
+}
+
+.Note-Card {
+    margin: 5px;
+    border-bottom: 4px dotted rgba(229, 101, 255, 0.712);
+    padding: 4px;
+    color: black;
+}
+
+.note-title{
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.submit-button{
+    margin: 4px;
+}
+
+.Note-Card button{
+    margin: 4px;
+}

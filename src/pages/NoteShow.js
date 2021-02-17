@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EditNoteForm from "./notesRenders/EditNoteForm";
 import { useParams, Link } from "react-router-dom";
+import '../css/NoteShow.css';
 
 function NoteShow ({user, setUser}){
 
@@ -66,17 +67,20 @@ function NoteShow ({user, setUser}){
       )
   }
     return (
-        <div style={{color: note.text_color}}>
+        
+        <div className="grid-container-noteshow">
+            <br/><br/><br/><br/>
+            <div className="Main">
             <h4>{note.title}</h4>
-            <p>{note.context}</p>
+            <p stytle={{color: note.text_color}}>{note.context}</p>
             
             {(editmodeNote === true)
             ? <EditNoteForm note={note} handleEditNote={handleEditNote} setEditModeNote={setEditModeNote}/>
             :<button onClick={handleEditClick}>Make a Edit</button>
             }
             
-            <button onClick={handleDelteClick}><Link to={"/notes"}> Erase </Link></button> 
-
+            <Link to={"/notes"}><button onClick={handleDelteClick}> Erase </button> </Link>
+            </div>
         </div>
     )
 }

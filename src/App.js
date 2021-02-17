@@ -55,7 +55,7 @@ function App() {
     
   }, []);
 
-  
+  console.log(user)
 
   if (user === null) {
     return (
@@ -135,6 +135,14 @@ function App() {
         <Route exact path="/search">
           <Search user={user}
           />
+        </Route>
+        
+        <Route exact path="/login">
+          <LoginPage setUser={setUser} user={User}/>
+        </Route>
+
+        <Route exact path="/signup">
+            <SignUp setUser={setUser}/>
         </Route>
 
         <Route path="/">

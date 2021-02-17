@@ -21,7 +21,7 @@ function PostRender({post, onDeletePost, handleEditPost, day}){
     return (
         <div>
             
-            <h3>Title: {post.title}</h3>
+            <h3>{post.title}</h3>
 
             <p style={{color: post.text_color}}>{post.context}</p>
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SearchTermSet from "./SearchRenders/SearchTermSet"
 import { Link } from "react-router-dom";
+import '../css/Search.css';
 
 import ResultCard from "./SearchRenders/ResultCard"
 
@@ -89,17 +90,37 @@ function Notes ({user }){
     return (
 
         <div>
-            <br/><br/><br/><br/><br/>
-            <h3>SeachPage</h3> 
+            <br/><br/><br/><br/>
+            <div className="Search-Container">
+            <h2>SeachPage</h2> 
             <h4>Options: </h4>
             
             <div>
-                <p>Page: {(Math.floor(index/ showAmount) ) + 1}</p>
-                {(index === 0) ? null : <button onClick={handlePreviousPage}>Previous Page</button>}
-                {((index + showAmount > filterBOTHMapped.length)  || (searchTerm === "")) 
-                ? null : <button onClick={handleNextPage}>Next Page</button>}
 
-                <label>Max Sribbles on One Page:</label>
+            <div className="Options">
+            <label>What to Search in? </label>
+            <select name="Where" value={searchFilter} onChange={handleSearchTerm} >
+                        <option value="All">All</option>
+                        <option value="Entries">Entries</option>
+                        <option value="Notes">Notes</option>
+
+            </select>
+            </div>
+
+            <div className="Options">
+            <label>Where to Search?     </label>
+            <select name="How" value={searchFilter2} onChange={handleSearchTerm2} >
+                        <option value="All">All</option>
+                        <option value="Title">Title</option>
+                        <option value="Context">Context</option>
+
+            </select>
+            </div>
+
+            <SearchTermSet searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+
+            <div className="Options">
+            <label>Max Sribbles on One Page: </label>
                     <select name="index" value={showAmount} onChange={handleShowAmountChange} >
                         <option value="5">5</option>
                         <option value="10">10</option>
@@ -110,30 +131,26 @@ function Notes ({user }){
                
             </div>
 
-            <label>What to Search in?</label>
-            <select name="Where" value={searchFilter} onChange={handleSearchTerm} >
-                        <option value="All">All</option>
-                        <option value="Entries">Entries</option>
-                        <option value="Notes">Notes</option>
+            </div>
 
-            </select>
-            <label>Where to Search?</label>
-            <select name="How" value={searchFilter2} onChange={handleSearchTerm2} >
-                        <option value="All">All</option>
-                        <option value="Title">Title</option>
-                        <option value="Context">Context</option>
-
-            </select>
-
-            <SearchTermSet searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
             
+            
+            {(searchTerm === "") ? null : <p>Page: {(Math.floor(index/ showAmount) ) + 1}</p>}
+                {(index === 0) ? null : <button onClick={handlePreviousPage}>Previous Page</button>}
+                {((index + showAmount > filterBOTHMapped.length)  || (searchTerm === "")) 
+                ? null : <button onClick={handleNextPage}>Next Page</button>}
             
             <h3>Results</h3>
             {/* {(searchTerm === "") ? null : <div>{filterPostMapped}</div>}
             {(searchTerm === "") ? null : <div>{filterNotesMapped}</div>} */}
-            {(searchTerm === "") ? null : <div>{filterBOTHMapped}</div>}
+            {(searchTerm === "") ? null : <div className="results">{filterBOTHMapped}</div>}
 
-            
+            <br/>
+            {(searchTerm === "") ? null : <p>Page: {(Math.floor(index/ showAmount) ) + 1}</p>}
+            {(index === 0) ? null : <button onClick={handlePreviousPage}>Previous Page</button>}
+                {((index + showAmount > filterBOTHMapped.length)  || (searchTerm === "")) 
+                ? null : <button onClick={handleNextPage}>Next Page</button>}
+            </div>
         </div>
     )
 

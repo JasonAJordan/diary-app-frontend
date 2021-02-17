@@ -34,7 +34,15 @@ function NavBar({user, setUser }){
     // }
     // {redirect ? <Redirect to="/search" /> : null}
 
-    if (user){
+    if (user === null){
+        return (
+            <div className="navBar">    
+                <Link to={`/`}><span className="Nav-Bar-Options">Home</span></Link>
+                <Link to="/login"><span className="Nav-Bar-Options">Login </span></Link>
+                <Link to="/signup"><span className="Nav-Bar-Options">Sign Up</span></Link>
+            </div>
+        )
+    } else {
         return (
             <div className="navBar" >
              
@@ -62,18 +70,17 @@ function NavBar({user, setUser }){
             </div>    
         )
     } 
-     else {
-        return (
-            <div>
+    //  else {
+    //     return (
+    //         <div>
                
-
-                <Link to={`/`}>Home</Link>
-                {}
-                {/* <Link to={`/users/${user.id}`}>User</Link> */}
+    //             <Link to={`/`}>Home</Link>
+    //             {/* {} */}
+    //             {/* <Link to={`/users/${user.id}`}>User</Link> */}
                 
-            </div>
-        )
-    }
+    //         </div>
+    //     )
+    // }
 
 
 }

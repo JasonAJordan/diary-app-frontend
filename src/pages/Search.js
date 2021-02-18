@@ -56,8 +56,9 @@ function Notes ({user }){
         )
     })
     
+    const filterBothNoSliceCount = [...filterPosts, ...filterNotes]
 
-    const filterBOTHMapped = [...filterPosts, ...filterNotes].slice(index, index + showAmount).map((blob) =>{
+    const filterBOTHMapped = filterBothNoSliceCount.slice(index, index + showAmount).map((blob) =>{
         const rando = Math.floor(Math.random() * 100000) + 1  
         return (
             <ResultCard blob={blob} key={rando}/>
@@ -137,7 +138,8 @@ function Notes ({user }){
             
             {(searchTerm === "") ? null : <p>Page: {(Math.floor(index/ showAmount) ) + 1}</p>}
                 {(index === 0) ? null : <button onClick={handlePreviousPage}>Previous Page</button>}
-                {((index + showAmount > filterBOTHMapped.length)  || (searchTerm === "")) 
+                {/* {index + showAmount} asdfa {filterBothNoSliceCount.length} */}
+                {(((index + showAmount) > filterBothNoSliceCount.length)  || (searchTerm === "")) 
                 ? null : <button onClick={handleNextPage}>Next Page</button>}
             
             <h3>Results</h3>
@@ -148,7 +150,7 @@ function Notes ({user }){
             <br/>
             {(searchTerm === "") ? null : <p>Page: {(Math.floor(index/ showAmount) ) + 1}</p>}
             {(index === 0) ? null : <button onClick={handlePreviousPage}>Previous Page</button>}
-                {((index + showAmount > filterBOTHMapped.length)  || (searchTerm === "")) 
+                {(((index + showAmount ) > filterBothNoSliceCount.length)  || (searchTerm === "")) 
                 ? null : <button onClick={handleNextPage}>Next Page</button>}
             </div>
         </div>

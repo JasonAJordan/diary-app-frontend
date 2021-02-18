@@ -127,6 +127,9 @@ function LoginPage ({user, setUser}){
                     <button type="submit">Login</button>
                 </form>
                 {/* <button onClick={myFunction}>Try it</button> */}
+
+
+
             </div>
         )
     // } 

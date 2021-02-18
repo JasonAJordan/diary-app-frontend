@@ -292,7 +292,7 @@ function Day({user, setUser}){
             
             <div className="Entries">
                 <div> 
-                    <h2>Entries:</h2>
+                    <label className="entry-label">Entries:</label>
                     <div className="entries-wrap">
                     {mappedPosts}
                     </div>

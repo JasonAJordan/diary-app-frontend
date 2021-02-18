@@ -11,13 +11,16 @@ import LoginPage from "./pages/LoginPage"
 import Notes from "./pages/Notes"
 import NoteShow from "./pages/NoteShow"
 import Search from "./pages/Search"
-
 import NavBar from "./navBar/NavBar"
 
 //import API from "./adapters/API"
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { Route, Switch } from 'react-router-dom';
+
+import './css/home.css';
+
+
 
 function App() {  
 
@@ -36,6 +39,11 @@ function App() {
   //     //setNavBarSearch("")
   //   })
   // }, [])
+
+  // function componentDidMount(){
+  //   document.title = 'test';
+  // }
+  
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -79,7 +87,7 @@ function App() {
         </Route>
 
         <Route exact path="/signup">
-            <SignUp setUser={setUser}/>
+            <SignUp setUser={setUser} user={user}/>
         </Route>
 
         <Route path="/">
@@ -89,6 +97,12 @@ function App() {
 
 
       </Switch>
+
+      <div class="wrapper">
+                    <div id="stars"></div>
+                    <div id="stars2"></div>
+                    {/* <div id="stars3"></div> */}
+      </div>
 
       </div>
     )
@@ -146,7 +160,7 @@ function App() {
         </Route>
 
         <Route path="/">
-            <Home  user={user} />
+            <Home  user={user}  title="test"/>
         </Route>
 
       </Switch>

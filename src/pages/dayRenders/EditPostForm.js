@@ -34,21 +34,27 @@ function EditPostForm({handleEditPost, post, day, setEditmode}){
     }
 
     return (
-        <div>
+        <div className="New-Entries">
             <h2>Edit Entry</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="title" placeholder={post.title}
+                <label>Title:</label>
+                <input  lassName="New-Entries-textarea-1" type="text" name="title" placeholder={post.title}
                 value={formData.title}
                 onChange={handleFormChange}
                 />
-                <input type="textarea" name="context" placeholder={post.context}
+                <br/>
+                <label>Entry:</label>
+                <textarea className="New-Entries-textarea-2" type="textarea" name="context" placeholder={post.context}
                 value={formData.context}
                 onChange={handleFormChange}
                 />
+                <br/>
+                <label>Color</label>
                 <input type="color" name="text_color" 
                 value={formData.text_color}
                 onChange={handleFormChange}
                 />
+                <br/>
                 <button type="submit">Save the Entry! </button>
             </form>
         </div>

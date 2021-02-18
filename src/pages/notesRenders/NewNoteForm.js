@@ -91,7 +91,7 @@ function NewNoteForm ({user, handleNewNote}){
                 onChange={handleFormChange2}
                 />
                 <br/>
-                <label>Note: </label>
+                <label>Entry: </label>
                 <textarea className="New-Note-textarea-2" type="textarea" name="context" placeholder="Your Entry"
                 value={formDataNoImg.context}
                 onChange={handleFormChange2}
@@ -114,7 +114,7 @@ function NewNoteForm ({user, handleNewNote}){
                 onChange={handleFormChange}
                 />
                 <br/>
-                <label>Note: </label>
+                <label>Entry: </label>
                 <textarea className="New-Note-textarea-2" type="textarea" name="context" placeholder="Your Entry"
                 value={formData.context}
                 onChange={handleFormChange}

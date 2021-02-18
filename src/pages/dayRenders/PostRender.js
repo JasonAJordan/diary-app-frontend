@@ -19,14 +19,14 @@ function PostRender({post, onDeletePost, handleEditPost, day}){
     }
     
     return (
-        <div>
+        <div className="Entry-card">
             
             <h3>{post.title}</h3>
 
             <p style={{color: post.text_color}}>{post.context}</p>
 
-            {post.image ? <img src={post.image} width="100" height="100"/> : null}
-
+            {post.image ? <img src={post.image} width="200" height="200"/> : null}
+            <br/>
             {(editmode === true)
             ? <EditPostForm post={post} handleEditPost={handleEditPost} day={day} setEditmode={setEditmode}/>
             :<button onClick={handleEditClick}>Make a Change</button>

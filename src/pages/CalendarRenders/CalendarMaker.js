@@ -59,7 +59,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                     <Link to={`days/${day.id}`} key={day.id}>
                     <div className="calendarDay" >
                         {day.date.slice(0,5)}<br/>
-                        <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
+                        <div style={{color: day.posts[0].text_color}}>{day.posts[0].title.slice(0,12)}.</div>
                         {postStickers(day.stickers)}
                     </div>
                     </Link>
@@ -69,7 +69,7 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                     <Link to={`days/${day.id}`} key={day.id}>
                     <div className="calendarDay" >
                         {day.date.slice(0,5)}<br/>
-                        <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
+                        <div style={{color: day.posts[0].text_color}}>{day.posts[0].title.slice(0,12)}.</div>
                     </div>
                     </Link>
                 ) 
@@ -94,16 +94,16 @@ function CalendarMaker({daysSliced, month, stickerMode, stickerSelected, handleN
                 return (
                     <div key={day.id} className="calendarDay" onClick={handleDayStickerClick} data-value={day.id}>
                         {day.date.slice(0,5)}<br/>
-                        <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
+                        <div style={{color: day.posts[0].text_color}}>{day.posts[0].title.slice(0,12)}.</div>
                         
                         {postStickers(day.stickers)}
-                    </div>
+                    </div>  
                 )
             } else if (day.posts[0]){
                 return (
                     <div key={day.id} className="calendarDay" onClick={handleDayStickerClick} data-value={day.id}>
                         {day.date.slice(0,5)}<br/>
-                        <div style={{color: day.posts[0].text_color}}>Entry Made!</div>
+                        <div style={{color: day.posts[0].text_color}}>{day.posts[0].title.slice(0,12)}.</div>
                     </div>
                 ) 
             } else if (day.stickers[0]){

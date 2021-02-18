@@ -51,17 +51,46 @@
    font-size: 36px; 
    padding: 8px;
 }
+
+.Date button{
+  background-color: rgb(20, 197, 220);
+  border: none;
+  color: white; 
+  padding: 10px 16px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 6px;
+  margin: 4px;
+}
   
   .Entries { grid-area: Entries; 
 
-    max-width: 720px;
-    width: 720px;
+    max-width: 740px;
+    width: 740px;
     border-radius: 6px;
     border: 1px solid black;
     margin-top: 5px;
     padding: 6px;
-    background-color: rgba(255, 255, 255, 0.438);
+    background-color: rgba(255, 255, 255, 0.658);
+}
+.entry-label {
+  font-size: 24px;
+}
 
+.Entry-card {
+  border-bottom: 1px solid black;
+  padding: 6px;
+}
+.Entry-card button {
+  margin: 4px;
+}
+
+.Entry-card h3 {
+  text-decoration: none;
+  font-size: 16px;
+  /* padding: 2px; */
+  /* margin: 4px; */
 }
 
 .entries-wrap{
@@ -78,6 +107,9 @@
     margin-top: 5px;
     border-radius: 6px;
     padding: 6px;
+  }
+  .New-Entries label {
+    margin: 4px;
   }
   .New-Entries-textarea-1{
     border: 2px solid #ccc;
@@ -104,6 +136,7 @@
   .New-Entries button{ 
     margin: 6px;
   }
+
   .ImageUpload{
     
   }

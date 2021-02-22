@@ -67,7 +67,7 @@ function App() {
 
   if (user === null) {
     return (
-      <div className="background">
+      <div className="background-nologin">
         {/* <NavBar user={user} setUser={setUser} />
     
         <Switch>
@@ -101,7 +101,7 @@ function App() {
       <div class="wrapper">
                     <div id="stars"></div>
                     <div id="stars2"></div>
-                    {/* <div id="stars3"></div> */}
+                     {/* <div id="stars3"></div>   */}
       </div>
 
       </div>

@@ -8,16 +8,25 @@
   min-height: 790px; 
 }
 
+.background-nologin {
+  background: rgb(249,175,255);
+  background: linear-gradient(0deg, rgba(249,175,255,1) 0%, rgba(206,200,255,1) 18%, rgba(214,215,255,1) 34%, rgba(186,228,255,1) 49%, rgba(179,233,255,1) 67%, rgba(149,255,253,1) 100%); 
+  min-height: 850px; 
+  max-height: 850px;
+  overflow: hidden;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 0.4fr 1.6fr 1.7fr 0.3fr;
-  grid-template-rows: 0.2fr 0.5fr 2.6fr 0.7fr;
+  grid-template-rows: 0.2fr 0.5fr 2.5fr 0.6fr 0.2fr;
   gap: 0px 0px;
   grid-template-areas:
     "Header Header Header Header"
     ". Month-Name Month-Name ."
     ". Calendar Calendar ."
-    ". Edit-Box Edit-Box .";
+    ". Edit-Box Edit-Box ."
+    ". . . .";
 }
 
 .Header { grid-area: Header; }
@@ -47,11 +56,24 @@
 
 .Edit-Box { grid-area: Edit-Box; 
   text-align: center;
-  max-height: 80px;
-  height: 80px;
+  max-height: 100px;
+  height: 100px;
   padding-top: 16px;
   border: red
 
+}
+
+.Edit-Box button { 
+
+  background-color: rgb(20, 197, 220);
+  border: none;
+  color: white; 
+  padding: 15px 32px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 6px;
+  margin: 4px;
 }
 
 .stickerBox {

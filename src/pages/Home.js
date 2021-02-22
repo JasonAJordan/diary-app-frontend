@@ -11,12 +11,11 @@ function Home ({user}){
             
             {/* <Link to="/login"><h2> Login Here </h2> </Link>
             <Link to="/signup"><h2>New? Sign Up here!</h2></Link> */}
-            <div class="wrapper">
+            {/* <div class="wrapper">
                 <div id="stars"></div>
                 <div id="stars2"></div>
-            {/* <div id="stars3"></div> */}
+            {/* <div id="stars3"></div> </div> */}
 
-            </div>
             </div>
         )
     } else {
@@ -31,7 +30,6 @@ function Home ({user}){
             <div id="stars"></div>
             <div id="stars2"></div>
             {/* <div id="stars3"></div> */}
-
         </div>
 
         </div>

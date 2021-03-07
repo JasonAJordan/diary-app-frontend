@@ -126,6 +126,7 @@ function Calendar({ month, setMonth, user, setUser}){
             
             </div>
             <div><br/></div>
+            <br/> <br/> <br/>
         </div>
         
     )

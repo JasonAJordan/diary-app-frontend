@@ -63,7 +63,7 @@ function App() {
     
   }, []);
 
-  console.log(user)
+  // console.log(user)
 
   if (user === null) {
     return (

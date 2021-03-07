@@ -54,11 +54,12 @@ function User({user, setUser}){
             <div className="Bio">
             <h3>Username: {user.username}</h3>
             <h3>Name: {user.name}</h3>
+            {(user.picture) ? <img src={user.picture} width="200" height="200"/> : null}
             <h3>Bio: {user.bio}</h3>
-            <p>Stickers: {user.stickers.length}</p>
-            <p>Journal Entries: {user.posts.length}</p>
-            <p>Sribbles Entries: {user.notes.length}</p>
-            <p>Stickers Placed: {user.day_stickers.length}</p>
+            <a>Stickers: {user.stickers.length}</a><br/>
+            <a>Journal Entries: {user.posts.length}</a><br/>
+            <a>Sribbles Entries: {user.notes.length}</a><br/>
+            <a>Stickers Placed: {user.day_stickers.length}</a>
             </div>
             
             <div className="yourStickers">
@@ -72,7 +73,8 @@ function User({user, setUser}){
             <div className="editForm">
             {(editmode === true)
                 ? <EditBioForm user={user} handleUserEdit={handleUserEdit} setEditmode={setEditmode}/>
-                :<button className="edit-bio-bttn" onClick={handleEditClick}>Edit Bio</button>
+                :<button className="edit-bio-bttn" onClick={handleEditClick}>Edit Bio</button> 
+                
             }
             </div>
 

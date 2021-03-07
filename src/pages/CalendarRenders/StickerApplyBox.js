@@ -29,7 +29,7 @@ function StickerApplyBox({user, stickerMode, setStickerMode, setStickerSelected}
                 </form>
                 : null
             }
-
+        
         </div>
     )
 
